@@ -3,3 +3,4 @@
 ## Commits
 
 - **[02: Estrutura com create-react-app](https://github.com/vinifraga/ignite/commit/2f4017697a2de4da94bd28f25c103037b8ea05f3)**
+- **[03: Exportando assets do Figma](https://github.com/vinifraga/ignite/commit/16f491833fc916481203488eb2cee87c7ea8ab6b#diff-3f946ca12ecb28d502d26eee4eb56aa779ef2380f5bc264edf86297fe418f1ab)**
