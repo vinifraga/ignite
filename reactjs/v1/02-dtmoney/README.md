@@ -10,3 +10,4 @@
 - **[07: Componente Header](https://github.com/vinifraga/ignite/commit/1357496bde269b09c8ff84548a2333d8533b89fe)**
 - **[08: Componente Summary](https://github.com/vinifraga/ignite/commit/6432c21fa28f8f54e25ae7fcf806b234dc918efd)**
 - **[09: Componente TransactionsTable](https://github.com/vinifraga/ignite/commit/a79c7010f5e1005f2af9db92268f85ae109680ba)**
+- **[11: Configurando MirageJS](https://github.com/vinifraga/ignite/commit/1b1acc18297e82975f27f5ebe5ce29f87bcd9719)**
