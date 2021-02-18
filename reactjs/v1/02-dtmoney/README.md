@@ -8,3 +8,4 @@
 - **[05: Criando estilos globais](https://github.com/vinifraga/ignite/commit/2a71b2f3165237d07b32625de7399440331543f4)**
 - **[06: Fontes do Google Fonts](https://github.com/vinifraga/ignite/commit/9894cd46741c860a02ea31fd4ab72059bf074119)**
 - **[07: Componente Header](https://github.com/vinifraga/ignite/commit/1357496bde269b09c8ff84548a2333d8533b89fe)**
+- **[08: Componente Summary](https://github.com/vinifraga/ignite/commit/6432c21fa28f8f54e25ae7fcf806b234dc918efd)**
