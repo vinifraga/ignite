@@ -16,3 +16,4 @@
 - **[14: Componente NewTransactionModal](https://github.com/vinifraga/ignite/commit/4ba64fad5dbe17b66e5aa9fc4f99d0a31369502e)**
 - **[15: Estrutura do formulário](https://github.com/vinifraga/ignite/commit/6d810c9365d4676b30ae07a6dd49b4c490681962)**
 - **[16: Estilizando modal](https://github.com/vinifraga/ignite/commit/c397b16d19ff637d8d2b35cb7612a52aedf95b2d)**
+- **[17: Criando botões de Tipo](https://github.com/vinifraga/ignite/commit/44ef8ead7a8e945380dae1ec297fa40270086590)**
