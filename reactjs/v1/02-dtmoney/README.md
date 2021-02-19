@@ -22,3 +22,4 @@
 - **[20: Salvando dados do form](https://github.com/vinifraga/ignite/commit/c976ffa7e2c1a9f34983715fc9d3551aa9b5581b)**
 - **[21: Inserindo transação na API](https://github.com/vinifraga/ignite/commit/f3a91144e992f3814cf85d8674de5630312d15dd)**
 - **[22: Listando transações e seeds](https://github.com/vinifraga/ignite/commit/fdac8b55ff8bd11e25fa2c653d671d1f61e205c5)**
+- **[23: Formatando valores](https://github.com/vinifraga/ignite/commit/5cf63ea50993b0afc036853d4b347c9da953671a)**
