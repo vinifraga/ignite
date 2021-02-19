@@ -18,3 +18,4 @@
 - **[16: Estilizando modal](https://github.com/vinifraga/ignite/commit/c397b16d19ff637d8d2b35cb7612a52aedf95b2d)**
 - **[17: Criando botões de Tipo](https://github.com/vinifraga/ignite/commit/44ef8ead7a8e945380dae1ec297fa40270086590)**
 - **[18: Funcionamento dos botões](https://github.com/vinifraga/ignite/commit/fc03cc84276cf4bc6427025997f2364274657524)**
+- **[19: Cores dos botões](https://github.com/vinifraga/ignite/commit/50c3949b00cf93000e8e28ec7d120a3a627f5795)**
