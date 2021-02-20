@@ -27,3 +27,4 @@
 - **[26: Carregando transações](https://github.com/vinifraga/ignite/commit/7e27fe99e9f875ca5ccf8bc350d98798e51ce73a)**
 - **[27: Movendo criação para o context](https://github.com/vinifraga/ignite/commit/9000837537a125150e9ce3b1ab74b00d5125e34e)**
 - **[28: Finalizando inserção](https://github.com/vinifraga/ignite/commit/331901ee8cda306e1581ed3139e381accd9f26a7)**
+- **[29: Calculando resumo](https://github.com/vinifraga/ignite/commit/ae3720c11046dfeb632e93bb6e0c6107cf6dd1ec)**
