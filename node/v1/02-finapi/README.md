@@ -29,3 +29,4 @@
 
 ## Commits
 - **[01: Conhecendo os requisitos da aplicação](https://github.com/vinifraga/ignite/commit/4751f5663ab0e1c052f03abcd3b8ff08edf15042)**
+- **[02: Cadastro de conta](https://github.com/vinifraga/ignite/commit/1159c5299f704c39447c9955c9d27b2980cff9d8)**
