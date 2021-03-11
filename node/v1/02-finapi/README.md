@@ -24,3 +24,8 @@
 - [ ] Não deve ser possível fazer saque em uma conta não existente
 - [ ] Não deve ser possível fazer saque quando o saldo for insuficiente
 - [ ] Não deve ser possível excluir uma conta não existente
+
+# Primeiro projeto com Node.js
+
+## Commits
+- **[01: Conhecendo os requisitos da aplicação](https://github.com/vinifraga/ignite/commit/4751f5663ab0e1c052f03abcd3b8ff08edf15042)**
