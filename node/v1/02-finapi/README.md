@@ -4,7 +4,7 @@
 
 ### Requisitos
 
-- [ ] Deve ser possível criar uma conta
+- [x] Deve ser possível criar uma conta
 - [ ] Deve ser possível buscar o extrato bancário do cliente
 - [ ] Deve ser possível realizar um depósito
 - [ ] Deve ser possível realizar um saque
@@ -18,7 +18,7 @@
 
 ## Regras de negócio
 
-- [ ] Não deve ser possível cadastrar uma conta com CPF já existente
+- [x] Não deve ser possível cadastrar uma conta com CPF já existente
 - [ ] Não deve ser possível buscar extrato em uma conta não existente
 - [ ] Não deve ser possível fazer depósito em uma conta não existente
 - [ ] Não deve ser possível fazer saque em uma conta não existente
@@ -30,3 +30,4 @@
 ## Commits
 - **[01: Conhecendo os requisitos da aplicação](https://github.com/vinifraga/ignite/commit/4751f5663ab0e1c052f03abcd3b8ff08edf15042)**
 - **[02: Cadastro de conta](https://github.com/vinifraga/ignite/commit/1159c5299f704c39447c9955c9d27b2980cff9d8)**
+- **[03: Validando CPF existente](https://github.com/vinifraga/ignite/commit/248cd77006ac777020cb1971e772b84b8158374c)**
