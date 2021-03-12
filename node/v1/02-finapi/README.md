@@ -8,7 +8,7 @@
 - [x] Deve ser possível buscar o extrato bancário do cliente
 - [x] Deve ser possível realizar um depósito
 - [x] Deve ser possível realizar um saque
-- [ ] Deve ser possível buscar o extrato bancário do cliente por data
+- [x] Deve ser possível buscar o extrato bancário do cliente por data
 - [ ] Deve ser possível atualizar dados da conta do cliente
 - [ ] Deve ser possível obter dados da conta do cliente
 - [ ] Deve ser possível deletar uma conta
@@ -36,3 +36,4 @@
 - **[06: Middlewares](https://github.com/vinifraga/ignite/commit/340003b52e59ffd54d39cfb01e3bd87bbaa45187)**
 - **[07: Criando depósito na conta](https://github.com/vinifraga/ignite/commit/d823f388b6ddbea1b6d3cff1be3ed35bf90bc8df)**
 - **[08: Criando saque na conta](https://github.com/vinifraga/ignite/commit/c442e13b59fa0bcdd534b6d2993a746535146ea5)**
+- **[09: Listar extrato bancário por data](https://github.com/vinifraga/ignite/commit/5053da7ce7c7b73ec5d0a9d68ddf4251e98bad9c)**
