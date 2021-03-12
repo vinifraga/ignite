@@ -24,3 +24,4 @@ be found at [https://hexdocs.pm/sum_list](https://hexdocs.pm/sum_list).
 - **[10: Criando nosso primeiro projeto](https://github.com/vinifraga/ignite/commit/ba9b3cd648a786e300cc6980ddbbe2b4290b2fd7)**
 - **[12: Somando todos os elementos de uma lista recursivamente](https://github.com/vinifraga/ignite/commit/eb7dce51bdcce3e6d2f29887f743e0d43d129cba)**
 - **[13: Testando nosso projeto](https://github.com/vinifraga/ignite/commit/2c3ba01544b8d6068c692e0b0a30c8f501079647)**
+- **[14: Introdução ao módulo Enum](https://github.com/vinifraga/ignite/commit/4d495b3f6b0a88ec65dc799303a78f8e36ac9c48)**
