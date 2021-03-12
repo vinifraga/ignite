@@ -22,3 +22,4 @@ be found at [https://hexdocs.pm/sum_list](https://hexdocs.pm/sum_list).
 
 ## Commits
 - **[10: Criando nosso primeiro projeto](https://github.com/vinifraga/ignite/commit/ba9b3cd648a786e300cc6980ddbbe2b4290b2fd7)**
+- **[12: Somando todos os elementos de uma lista recursivamente](https://github.com/vinifraga/ignite/commit/eb7dce51bdcce3e6d2f29887f743e0d43d129cba)**
