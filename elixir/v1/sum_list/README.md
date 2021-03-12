@@ -19,3 +19,6 @@ Documentation can be generated with [ExDoc](https://github.com/elixir-lang/ex_do
 and published on [HexDocs](https://hexdocs.pm). Once published, the docs can
 be found at [https://hexdocs.pm/sum_list](https://hexdocs.pm/sum_list).
 
+
+## Commits
+- **[10: Criando nosso primeiro projeto](https://github.com/vinifraga/ignite/commit/ba9b3cd648a786e300cc6980ddbbe2b4290b2fd7)**
