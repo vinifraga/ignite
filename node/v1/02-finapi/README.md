@@ -33,3 +33,4 @@
 - **[03: Validando CPF existente](https://github.com/vinifraga/ignite/commit/248cd77006ac777020cb1971e772b84b8158374c)**
 - **[04: Listando o extrato](https://github.com/vinifraga/ignite/commit/40ba6a4a7cbd6c7a537488d17ffcddba798cbe1b)**
 - **[05: Validando a conta](https://github.com/vinifraga/ignite/commit/64ef835b41da59638c8921b4cfd7a9dbb8ff217b)**
+- **[06: Middlewares](https://github.com/vinifraga/ignite/commit/340003b52e59ffd54d39cfb01e3bd87bbaa45187)**
