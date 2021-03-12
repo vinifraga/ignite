@@ -35,3 +35,4 @@
 - **[05: Validando a conta](https://github.com/vinifraga/ignite/commit/64ef835b41da59638c8921b4cfd7a9dbb8ff217b)**
 - **[06: Middlewares](https://github.com/vinifraga/ignite/commit/340003b52e59ffd54d39cfb01e3bd87bbaa45187)**
 - **[07: Criando depósito na conta](https://github.com/vinifraga/ignite/commit/d823f388b6ddbea1b6d3cff1be3ed35bf90bc8df)**
+- **[08: Criando saque na conta](https://github.com/vinifraga/ignite/commit/c442e13b59fa0bcdd534b6d2993a746535146ea5)**
