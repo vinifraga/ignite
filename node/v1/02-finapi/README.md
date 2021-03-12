@@ -38,3 +38,4 @@
 - **[08: Criando saque na conta](https://github.com/vinifraga/ignite/commit/c442e13b59fa0bcdd534b6d2993a746535146ea5)**
 - **[09: Listar extrato bancário por data](https://github.com/vinifraga/ignite/commit/5053da7ce7c7b73ec5d0a9d68ddf4251e98bad9c)**
 - **[10: Atualizar conta](https://github.com/vinifraga/ignite/commit/4cb0bdf66d3756b9563934702e8a50ba333fe518)**
+- **[11: Remover conta](https://github.com/vinifraga/ignite/commit/e1d5bec74a391ab0819fa44e454d7556b060f38b)**
