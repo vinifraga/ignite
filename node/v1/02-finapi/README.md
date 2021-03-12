@@ -9,10 +9,10 @@
 - [x] Deve ser possível realizar um depósito
 - [x] Deve ser possível realizar um saque
 - [x] Deve ser possível buscar o extrato bancário do cliente por data
-- [ ] Deve ser possível atualizar dados da conta do cliente
-- [ ] Deve ser possível obter dados da conta do cliente
-- [ ] Deve ser possível deletar uma conta
-- [ ] Deve ser possível retornar o balance
+- [x] Deve ser possível atualizar dados da conta do cliente
+- [x] Deve ser possível obter dados da conta do cliente
+- [x] Deve ser possível deletar uma conta
+- [x] Deve ser possível retornar o balance
 
 ---
 
@@ -23,7 +23,7 @@
 - [x] Não deve ser possível fazer depósito em uma conta não existente
 - [x] Não deve ser possível fazer saque em uma conta não existente
 - [x] Não deve ser possível fazer saque quando o saldo for insuficiente
-- [ ] Não deve ser possível excluir uma conta não existente
+- [x] Não deve ser possível excluir uma conta não existente
 
 # Primeiro projeto com Node.js
 
@@ -37,3 +37,4 @@
 - **[07: Criando depósito na conta](https://github.com/vinifraga/ignite/commit/d823f388b6ddbea1b6d3cff1be3ed35bf90bc8df)**
 - **[08: Criando saque na conta](https://github.com/vinifraga/ignite/commit/c442e13b59fa0bcdd534b6d2993a746535146ea5)**
 - **[09: Listar extrato bancário por data](https://github.com/vinifraga/ignite/commit/5053da7ce7c7b73ec5d0a9d68ddf4251e98bad9c)**
+- **[10: Atualizar conta](https://github.com/vinifraga/ignite/commit/4cb0bdf66d3756b9563934702e8a50ba333fe518)**
