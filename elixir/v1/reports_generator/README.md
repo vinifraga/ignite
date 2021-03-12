@@ -1,21 +1,4 @@
 # ReportsGenerator
 
-**TODO: Add description**
-
-## Installation
-
-If [available in Hex](https://hex.pm/docs/publish), the package can be installed
-by adding `reports_generator` to your list of dependencies in `mix.exs`:
-
-```elixir
-def deps do
-  [
-    {:reports_generator, "~> 0.1.0"}
-  ]
-end
-```
-
-Documentation can be generated with [ExDoc](https://github.com/elixir-lang/ex_doc)
-and published on [HexDocs](https://hexdocs.pm). Once published, the docs can
-be found at [https://hexdocs.pm/reports_generator](https://hexdocs.pm/reports_generator).
-
+## Commits
+- **[02: Criando nosso projeto e configurando o Credo](https://github.com/vinifraga/ignite/commit/177c8ad7495c4dcc6eac9f7532c1a4421f9b6ac4)**
