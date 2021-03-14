@@ -10,3 +10,4 @@
 - **[08: Extraindo o parser para um novo módulo](https://github.com/vinifraga/ignite/commit/18cf3060263e15cf7e2980c106368b5e08140943)**
 - **[09: Retornando o maior valor](https://github.com/vinifraga/ignite/commit/7ff033ac04c48b712b0b24b73720071b78442f4a)**
 - **[10: Calculando a frequência de cada tipo de pedido](https://github.com/vinifraga/ignite/commit/70536f76a7d22e7779d02b1cbf14a37b5af7cfe8)**
+- **[11: Refatorando o retorno do maior preço](https://github.com/vinifraga/ignite/commit/fd941c8d1cf2ca72366720f1b15c0ecbb27378eb)**
