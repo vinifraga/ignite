@@ -1,4 +1,4 @@
-# ReportsGenerator
+# Aprofundando os conceitos
 
 ## Commits
 - **[02: Criando nosso projeto e configurando o Credo](https://github.com/vinifraga/ignite/commit/177c8ad7495c4dcc6eac9f7532c1a4421f9b6ac4)**
@@ -15,3 +15,4 @@
 - **[13: Testando o ReportsGenerator](https://github.com/vinifraga/ignite/commit/cd23d786540fdd2031b5c6fac972c6e91ea1e58c)**
 - **[17: Criando nossa primeira versão paralela](https://github.com/vinifraga/ignite/commit/25ab01818aaf06b22d91a2c758c40404e4db3b9f)**
 - **[18: Medindo o tempo de execução da versão paralela](https://github.com/vinifraga/ignite/commit/34658809d58bb56ff3a03c84ada9d626639246f1)**
+- **[19: Testando nossa versão paralela](https://github.com/vinifraga/ignite/commit/899f13cc78b6003ff0a98dc4edcce6444c0dab63)**
