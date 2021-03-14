@@ -12,3 +12,4 @@
 - **[10: Calculando a frequência de cada tipo de pedido](https://github.com/vinifraga/ignite/commit/70536f76a7d22e7779d02b1cbf14a37b5af7cfe8)**
 - **[11: Refatorando o retorno do maior preço](https://github.com/vinifraga/ignite/commit/fd941c8d1cf2ca72366720f1b15c0ecbb27378eb)**
 - **[12: Testando nosso Parser](https://github.com/vinifraga/ignite/commit/fa7374efec9cafd6a2019d26586e29f40b76857f)**
+- **[13: Testando o ReportsGenerator](https://github.com/vinifraga/ignite/commit/cd23d786540fdd2031b5c6fac972c6e91ea1e58c)**
