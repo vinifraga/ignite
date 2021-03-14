@@ -14,3 +14,4 @@
 - **[12: Testando nosso Parser](https://github.com/vinifraga/ignite/commit/fa7374efec9cafd6a2019d26586e29f40b76857f)**
 - **[13: Testando o ReportsGenerator](https://github.com/vinifraga/ignite/commit/cd23d786540fdd2031b5c6fac972c6e91ea1e58c)**
 - **[17: Criando nossa primeira versão paralela](https://github.com/vinifraga/ignite/commit/25ab01818aaf06b22d91a2c758c40404e4db3b9f)**
+- **[18: Medindo o tempo de execução da versão paralela](https://github.com/vinifraga/ignite/commit/34658809d58bb56ff3a03c84ada9d626639246f1)**
