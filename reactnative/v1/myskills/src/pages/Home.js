@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   View,
   Text,
@@ -6,7 +6,8 @@ import {
   TextInput,
   Platform,
   FlatList,
-  ScrollView
+  ScrollView,
+  ActivityIndicator
 } from 'react-native';
 import { Button } from '../components/Button';
 import { SkillCard } from '../components/SkillCard';
@@ -14,14 +15,24 @@ import { SkillCard } from '../components/SkillCard';
 export function Home() {
   const [newSkill, setNewSkill] = useState('');
   const [mySkills, setMySkills] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   function handleAddNewSkill() {
+    setIsLoading(true);
     setMySkills(oldState => [...oldState, newSkill]);
   }
+
+  useEffect(() => {
+    setTimeout(() => {
+      setIsLoading(false);
+    }, 3000);
+  }, [mySkills]);
 
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Welcome, Rodrigo</Text>
+
+      { isLoading && <ActivityIndicator color="#FFF" size="large" />}
 
       <TextInput
         style={styles.input}
