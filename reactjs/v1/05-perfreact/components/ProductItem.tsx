@@ -1,5 +1,6 @@
 import { memo, useState } from "react"
 import dynamic from 'next/dynamic';
+import lodash from 'lodash';
 
 import { AddProductToWishListProps } from "./AddProductToWishlist"
 
@@ -38,5 +39,5 @@ export function ProductItemComponent({ product, onAddToWishList }: ProductItemPr
 }
 
 export const ProductItem = memo(ProductItemComponent, (prevProps, nextProps) => {
-  return Object.is(prevProps.product, nextProps.product)
+  return lodash.isEqual(prevProps.product, nextProps.product)
 })
