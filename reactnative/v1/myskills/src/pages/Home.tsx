@@ -11,15 +11,25 @@ import {
 import { Button } from '../components/Button';
 import { SkillCard } from '../components/SkillCard';
 
+interface SkillData {
+  id: string;
+  name: string;
+}
+
 export function Home() {
   const [newSkill, setNewSkill] = useState('');
-  const [mySkills, setMySkills] = useState([]);
+  const [mySkills, setMySkills] = useState<SkillData[]>([]);
   const [isLoading, setIsLoading] = useState(false);
   const [currentHour, setCurrentHour] = useState(10);
 
   const handleAddNewSkill = useCallback(() => {
     setIsLoading(true);
-    setMySkills(oldState => [...oldState, newSkill]);
+
+    const data = {
+      id: String(new Date().getTime()),
+      name: newSkill
+    }
+    setMySkills(oldState => [...oldState, data]);
   }, [newSkill]);
 
   const handleRemoveSkill = useCallback((skillRemoved) => {
@@ -55,7 +65,7 @@ export function Home() {
         onChangeText={setNewSkill}
       />
 
-      <Button onPress={handleAddNewSkill} />
+      <Button title='Add' onPress={handleAddNewSkill} />
 
       <Text style={[styles.title, { marginVertical: 50 }]}>
         My Skills
@@ -64,9 +74,13 @@ export function Home() {
       { isLoading ? <ActivityIndicator color="#FFF" size="large" /> : (
         <FlatList
           data={mySkills}
-          keyExtractor={item => item}
+          keyExtractor={item => item.id}
           renderItem={({ item }) => (
-            <SkillCard skill={item} onPress={() => handleRemoveSkill(item)} />
+            <SkillCard 
+              skill={item.name} 
+              onPress={() => handleRemoveSkill(item)} 
+              activeOpacity={0.7}
+            />
           )}
         />
       )}
