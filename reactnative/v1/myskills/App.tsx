@@ -3,7 +3,7 @@ import { StatusBar } from 'react-native';
 
 import { Home } from './src/pages/Home';
 
-export default function App() {
+const App: React.FC = () => {
   return (
     <>
       <StatusBar barStyle="light-content" />
@@ -11,3 +11,5 @@ export default function App() {
     </>
   )
 }
+
+export default App;
