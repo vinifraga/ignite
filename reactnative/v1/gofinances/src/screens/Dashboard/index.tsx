@@ -8,7 +8,8 @@ import {
   Photo,
   User,
   UserGreeting,
-  UserName
+  UserName,
+  Icon
  } from './styles';
 
 export function Dashboard() {
@@ -24,6 +25,8 @@ export function Dashboard() {
               <UserName>Vinícius</UserName>
             </User>
           </UserInfo>
+
+          <Icon name="power" />
         </UserWrapper>
       </Header>
     </Container>
