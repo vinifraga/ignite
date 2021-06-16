@@ -48,8 +48,6 @@ export function Register() {
 
   const navigation = useNavigation();
 
-  const dataKey = '@gofinances:transactions'
-
   const { control, handleSubmit, reset, formState: { errors } } = useForm({
     resolver: yupResolver(schema)
   });
@@ -85,6 +83,8 @@ export function Register() {
     }
 
     try {
+      const dataKey = '@gofinances:transactions'
+
       const data = await AsyncStorage.getItem(dataKey);
       const currentData = data ? JSON.parse(data) : [];
 
