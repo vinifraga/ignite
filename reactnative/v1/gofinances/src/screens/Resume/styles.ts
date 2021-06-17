@@ -30,3 +30,8 @@ export const Content = styled.ScrollView.attrs({
     padding: 24
   }
 })``;
+
+export const ChartContainer = styled.View`
+  width: 100%;
+  align-items: center;
+`;
