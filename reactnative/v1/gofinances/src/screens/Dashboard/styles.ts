@@ -23,7 +23,7 @@ export const Header = styled.View`
   align-items: flex-start;
   flex-direction: row;
 
-  padding-top: 26px;
+  padding-top: ${Platform.OS === 'ios' ? 0 : 26}px;
 `;
 
 export const UserWrapper = styled.View`
