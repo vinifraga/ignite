@@ -57,3 +57,9 @@ export const Month = styled.Text`
 
   color: ${({ theme }) => theme.colors.title};
 `;
+
+export const LoadContainer = styled.View`
+  flex: 1;
+  justify-content: center;
+  align-items: center;
+`;

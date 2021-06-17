@@ -22,6 +22,8 @@ export const Header = styled.View`
   justify-content: center;
   align-items: flex-start;
   flex-direction: row;
+
+  padding-top: 26px;
 `;
 
 export const UserWrapper = styled.View`
