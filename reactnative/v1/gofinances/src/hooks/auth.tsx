@@ -13,6 +13,9 @@ interface IAuthContextData {
   user: User;
   signInWithGoogle(): Promise<void>;
   signInWithApple(): Promise<void>;
+  signOut(): Promise<void>;
+  userStorageLoading: boolean;
+  isLoggingIn: boolean;
 }
 
 interface User {
@@ -27,11 +30,14 @@ const AuthContext = createContext({} as IAuthContextData)
 function AuthProvider({ children }: AuthContextProps) {
   const [user, setUser] = useState<User>({} as User)
   const [userStorageLoading, setUserStorageLoading] = useState(true);
+  const [isLoggingIn, setIsLoggingIn] = useState(false);
 
   const userStorageKey = '@gofinances:user';
 
   async function signInWithGoogle() {
     try {
+      setIsLoggingIn(true);
+
       const result = await Google.logInAsync({
         iosClientId: '827068571407-kki6216t7b4u69q6l1va00eu2t4drq12.apps.googleusercontent.com',
         androidClientId: '827068571407-sqpqv8ksf54uq64n9s9robjqc2tgai3p.apps.googleusercontent.com',
@@ -52,11 +58,15 @@ function AuthProvider({ children }: AuthContextProps) {
   
     } catch (error) {
         throw new Error(error);
+    } finally {
+        setIsLoggingIn(false);
     }
   }
 
   async function signInWithApple() {
     try {
+      setIsLoggingIn(true);
+
       const credential = await AppleAuthentication.signInAsync({
         requestedScopes: [
           AppleAuthentication.AppleAuthenticationScope.FULL_NAME,
@@ -65,19 +75,30 @@ function AuthProvider({ children }: AuthContextProps) {
       })
 
       if (credential) {
+        console.log(credential);
+        const name = credential.fullName!.givenName!;
+        const photo = `https://ui-avatars.com/api/?name=${name}&length=1`;
+
         const userLoggedIn = {
           id: String(credential.user),
           email: credential.email!,
-          name: credential.fullName!.givenName!,
-          photo: undefined
+          name,
+          photo
         }
   
         setUser(userLoggedIn);
         AsyncStorage.setItem(userStorageKey, JSON.stringify(userLoggedIn));
       }
     } catch (error) {
-      
+      throw new Error(error);
+    } finally {
+      setIsLoggingIn(false);
     }
+  }
+
+  async function signOut() {
+    setUser({} as User);
+    AsyncStorage.removeItem(userStorageKey);
   }
 
   useEffect(() => {
@@ -99,7 +120,10 @@ function AuthProvider({ children }: AuthContextProps) {
     <AuthContext.Provider value={{ 
       user, 
       signInWithGoogle, 
-      signInWithApple 
+      signInWithApple,
+      signOut,
+      userStorageLoading,
+      isLoggingIn
     }}>
       {children}
     </AuthContext.Provider>

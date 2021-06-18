@@ -16,10 +16,13 @@ import {
   Footer,
   FooterWrapper
 } from './styles';
-import { Alert } from 'react-native';
+import { ActivityIndicator, Alert } from 'react-native';
+import { useState } from 'react';
+import { useTheme } from 'styled-components';
 
 export function SignIn() {
-  const { user, signInWithGoogle, signInWithApple } = useAuth();
+  const theme = useTheme();
+  const { signInWithGoogle, signInWithApple, isLoggingIn } = useAuth();
 
   async function handleSignInWithGoogle() {
     try {
@@ -75,6 +78,13 @@ export function SignIn() {
             onPress={handleSignInWithApple}
           />
         </FooterWrapper>
+
+        { isLoggingIn && (
+          <ActivityIndicator 
+            color={theme.colors.shape}
+            style={{ marginTop: 18 }}
+          />
+        ) }
       </Footer>
     </Container>
   )
