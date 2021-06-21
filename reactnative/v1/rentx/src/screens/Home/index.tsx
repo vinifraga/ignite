@@ -7,6 +7,7 @@ import Logo from "../../assets/logo.svg";
 import { Car } from '../../components/Car';
 
 import {
+  CarList,
   Container,
   Header,
   HeaderContent,
@@ -14,7 +15,7 @@ import {
 } from './styles';
 
 export function Home() {
-  const carDataOne = {
+  const carData = {
     brand: 'Audi',
     name: 'RS 5 Coupé',
     rent: {
@@ -22,16 +23,6 @@ export function Home() {
       price: 120
     },
     thumbnail: 'https://freepngimg.com/thumb/audi/35227-5-audi-rs5-red.png'
-  }
-
-  const carDataTwo = {
-    brand: 'Porsche',
-    name: 'Panamera',
-    rent: {
-      period: 'Ao dia',
-      price: 340
-    },
-    thumbnail: 'https://assets.stickpng.com/images/580b585b2edbce24c47b2cae.png'
   }
 
   return (
@@ -55,8 +46,13 @@ export function Home() {
         </HeaderContent>
       </Header>
 
-      <Car data={carDataOne} />
-      <Car data={carDataTwo} />
+      <CarList 
+        data={[1,2,3,4,5,6,7]}
+        keyExtractor={item => String(item)}
+        renderItem={({ item }) => (
+          <Car data={carData} />
+        )}
+      />
 
     </Container>
   );
