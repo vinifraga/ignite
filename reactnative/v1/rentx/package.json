@@ -10,6 +10,9 @@
   "dependencies": {
     "@expo-google-fonts/archivo": "^0.1.0",
     "@expo-google-fonts/inter": "^0.1.0",
+    "@react-native-community/masked-view": "0.1.10",
+    "@react-navigation/native": "^5.9.4",
+    "@react-navigation/stack": "^5.14.5",
     "expo": "~41.0.1",
     "expo-app-loading": "^1.0.3",
     "expo-font": "~9.1.0",
@@ -23,6 +26,7 @@
     "react-native-iphone-x-helper": "^1.3.1",
     "react-native-reanimated": "~2.1.0",
     "react-native-responsive-fontsize": "^0.5.0",
+    "react-native-safe-area-context": "3.2.0",
     "react-native-screens": "~3.0.0",
     "react-native-svg": "12.1.0",
     "react-native-unimodules": "~0.13.3",
