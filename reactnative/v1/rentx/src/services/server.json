@@ -313,7 +313,9 @@
         "2021-07-18",
         "2021-05-28",
         "2021-05-29",
-        "2021-05-30"
+        "2021-05-30",
+        "2021-07-28",
+        "2021-07-29"
       ]
     },
     {
@@ -399,6 +401,53 @@
         ]
       },
       "id": 1
+    },
+    {
+      "user_id": 1,
+      "car": {
+        "id": "52930821-cbea-4b05-9f45-7c02b1bb0d8c",
+        "brand": "Chevrolet",
+        "name": "Corvette Z06",
+        "about": "O Chevrolet Corvette Z06 inclui freios Brembo de alto desempenho com pinças maiores no conjunto dianteiro, itens aerodinâmicos com capô de fibra de carbono, suspensão para alto desempenho.",
+        "rent": {
+          "period": "Ao dia",
+          "price": 620
+        },
+        "fuel_type": "gasoline_motor",
+        "thumbnail": "https://storage.googleapis.com/golden-wind/ignite/react-native/thumbnails/3.png",
+        "accessories": [
+          {
+            "type": "speed",
+            "name": "330km/h"
+          },
+          {
+            "type": "acceleration",
+            "name": "6.2s"
+          },
+          {
+            "type": "turning_diameter",
+            "name": "900 HP"
+          },
+          {
+            "type": "gasoline_motor",
+            "name": "Gasoline"
+          },
+          {
+            "type": "exchange",
+            "name": "Auto"
+          },
+          {
+            "type": "seats",
+            "name": "2 pessoas"
+          }
+        ],
+        "photos": [
+          "https://storage.googleapis.com/golden-wind/ignite/react-native/images/6.png",
+          "https://storage.googleapis.com/golden-wind/ignite/react-native/images/7.png",
+          "https://storage.googleapis.com/golden-wind/ignite/react-native/images/8.png"
+        ]
+      },
+      "id": 2
     }
   ]
 }
