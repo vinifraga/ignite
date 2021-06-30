@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
+import { useRoute } from '@react-navigation/native';
 import { useNavigation } from '@react-navigation/core';
 import { useTheme } from 'styled-components';
 import { StatusBar } from 'react-native';
 import { format } from 'date-fns';
 
+import { CarDTO } from '../../dtos/CarDTO';
 import { getPlatformDate } from '../../utils/getPlatformDate';
 
 import { BackButton } from '../../components/BackButton';
@@ -24,9 +26,7 @@ import {
   Content,
   Footer
 } from './styles';
-import { Alert } from 'react-native';
-import { useRoute } from '@react-navigation/native';
-import { CarDTO } from '../../dtos/CarDTO';
+
 
 interface RentalPeriod {
   startFormatted: string;
@@ -49,10 +49,6 @@ export function Scheduling() {
   const { car } = route.params as Params;
 
   function handleConfirmRental() {
-    if (!rentalPeriod.startFormatted || !rentalPeriod.endFormatted) {
-      return Alert.alert('Selecione o intervalo para alugar');
-    }
-
     navigation.navigate('SchedulingDetails', {
       car,
       dates: Object.keys(markedDates)
@@ -132,7 +128,11 @@ export function Scheduling() {
       </Content>
 
       <Footer>
-        <Button title="Confirmar" onPress={handleConfirmRental} />
+        <Button 
+          title="Confirmar" 
+          onPress={handleConfirmRental}
+          enabled={!!rentalPeriod.startFormatted}
+        />
       </Footer>
     </Container>
   );

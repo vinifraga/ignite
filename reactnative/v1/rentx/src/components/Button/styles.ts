@@ -15,7 +15,9 @@ export const Container = styled(RectButton)<ButtonProps>`
 
   background-color: ${({ color, theme }) => 
     color ? color : theme.colors.main
-  }
+  };
+
+  opacity: ${({ enabled = true }) => enabled ? 1 : 0.5}
 `;
 
 export const Title = styled.Text`
