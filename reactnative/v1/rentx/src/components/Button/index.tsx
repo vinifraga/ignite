@@ -24,10 +24,9 @@ export function Button({
 
   return (
     <Container {...rest} color={color}>
-      {/* {
+      {
         loading ? <ActivityIndicator color={theme.colors.shape} /> : <Title>{title}</Title>
-      } */}
-      <Title>{title}</Title>
+      }
     </Container>
   );
 }
