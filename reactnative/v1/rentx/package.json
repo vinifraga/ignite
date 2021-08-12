@@ -6,7 +6,7 @@
     "web": "expo start --web",
     "start": "react-native start",
     "test": "jest",
-    "server": "yarn json-server ./src/services/server.json --host 192.168.1.4 --port 3333 --delay 700"
+    "server": "yarn json-server ./src/services/server.json --host 192.168.1.7 --port 3333 --delay 700"
   },
   "dependencies": {
     "@expo-google-fonts/archivo": "^0.1.0",

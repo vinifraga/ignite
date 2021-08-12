@@ -20,7 +20,7 @@ export const ImageIndex = styled.View<ImageIndexProps>`
   height: 6px;
 
   background-color: ${({ theme, active }) => 
-    active ? theme.colors.title : theme.colors.shape 
+    active ? theme.colors.title : theme.colors.text_detail 
   };
 
   margin-left: 8px;
