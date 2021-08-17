@@ -125,13 +125,7 @@ export function CarDetails() {
           }
         </Accessories>
 
-        <About>
-          {car.about}
-          {car.about}
-          {car.about}
-          {car.about}
-          {car.about}
-        </About>
+        <About>{car.about}</About>
       </AnimatedContent>
       
       <Footer>
