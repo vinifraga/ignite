@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { StatusBar } from 'react-native';
+import { BackHandler, StatusBar } from 'react-native';
 import { useNavigation } from '@react-navigation/core';
 import { RFValue } from 'react-native-responsive-fontsize';
 import { Ionicons } from '@expo/vector-icons';
@@ -98,7 +98,7 @@ export function Home() {
           />
 
           <TotalCars>
-            Total de {cars.length} carros
+            { loading ? `Buscando carros...` : `Total de ${cars.length} carros` }
           </TotalCars>
         </HeaderContent>
       </Header>

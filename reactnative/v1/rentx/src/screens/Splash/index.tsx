@@ -46,7 +46,12 @@ export function Splash() {
   });
 
   function startApp() {
-    navigation.navigate('Home');
+    navigation.reset({
+      index: 0,
+      routes: [
+        { name: 'Home' }
+      ]
+    });
   }
 
   useEffect(() => {
