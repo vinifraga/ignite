@@ -2,6 +2,7 @@ import { getStatusBarHeight } from 'react-native-iphone-x-helper';
 import { RFValue } from 'react-native-responsive-fontsize';
 import styled from 'styled-components/native';
 import { Button } from '../../components/Button';
+import { Input } from '../../components/Input';
 
 export const Container = styled.View`
   flex: 1;
@@ -25,6 +26,8 @@ export const Form = styled.View`
   width: 100%;
   margin: 64px 0;
 `;
+
+export const EmailInput = styled(Input)``;
 
 export const SubTitle = styled.Text`
   font-size: ${RFValue(15)}px;

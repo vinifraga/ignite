@@ -12,7 +12,8 @@ import {
   Footer, 
   RegisterButton, 
   LoginButton, 
-  Form
+  Form,
+  EmailInput
 } from './styles';
 
 export function SignIn() {
@@ -39,8 +40,13 @@ export function SignIn() {
       </Header>
 
       <Form>
-        <Input
+        <EmailInput
           iconName="mail"
+          placeholder="E-mail"
+          placeholderTextColor={theme.colors.text_detail}
+          keyboardType="email-address"
+          autoCorrect={false}
+          autoCapitalize="none"
         />
       </Form>
 
