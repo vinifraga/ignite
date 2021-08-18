@@ -2,7 +2,8 @@ import React from 'react';
 import { StatusBar } from 'react-native';
 
 import {
-  Container, 
+  KAV,
+  ScrollableContainer, 
   Header, 
   Title, 
   SubTitle, 
@@ -15,57 +16,56 @@ import {
 } from './styles';
 
 export function SignIn() {
-
   return (
-    <Container>
-      <StatusBar 
-        barStyle="dark-content"
-        backgroundColor="transparent"
-        translucent
-      />
-
-      <Header>
-        <Title>
-          Estamos{'\n'}
-          quase lá.
-        </Title>
-
-        <SubTitle>
-          Faça seu login para começar{'\n'}
-          uma experiência incrível.
-        </SubTitle>
-      </Header>
-
-      <Form>
-        <EmailInput
-          iconName="mail"
-          placeholder="E-mail"
-          keyboardType="email-address"
-          autoCorrect={false}
-          autoCapitalize="none"
+    <KAV behavior="height">
+      <ScrollableContainer keyboardShouldPersistTaps="handled">
+        <StatusBar 
+          barStyle="dark-content"
+          backgroundColor="transparent"
+          translucent
         />
 
-        <PasswordInput 
-          placeholder="Senha"
-          autoCorrect={false}
-          autoCapitalize="none"
-        />
-      </Form>
+        <Header>
+          <Title>
+            Estamos{'\n'}
+            quase lá.
+          </Title>
 
+          <SubTitle>
+            Faça seu login para começar{'\n'}
+            uma experiência incrível.
+          </SubTitle>
+        </Header>
 
-      <Footer>
-        <LoginButton 
-          title="Login"
-          onPress={() => {}}
-          enabled={false}
-        />
+        <Form>
+          <EmailInput
+            iconName="mail"
+            placeholder="E-mail"
+            keyboardType="email-address"
+            autoCorrect={false}
+            autoCapitalize="none"
+          />
 
-        <RegisterButton 
-          title="Criar conta gratuita"
-          onPress={() => {}}
-          enabled={false}
-        />
-      </Footer>
-    </Container>
+          <PasswordInput 
+            placeholder="Senha"
+            autoCorrect={false}
+            autoCapitalize="none"
+          />
+        </Form>
+
+        <Footer>
+          <LoginButton 
+            title="Login"
+            enabled={false}
+          />
+
+          <RegisterButton 
+            title="Criar conta gratuita"
+            onPress={() => {}}
+            enabled={false}
+          />
+        </Footer>
+      </ScrollableContainer>
+    </KAV>
   );
 }

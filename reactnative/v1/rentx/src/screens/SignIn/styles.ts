@@ -6,10 +6,15 @@ import { Button } from '../../components/Button';
 import { Input } from '../../components/Input';
 import { ProtectedInput } from '../../components/ProtectedInput';
 
-export const Container = styled.View`
+export const KAV = styled.KeyboardAvoidingView`
   flex: 1;
-  padding: 0 24px;
+`;
 
+export const ScrollableContainer = styled.ScrollView.attrs({
+  contentContainerStyle: {
+    paddingHorizontal: 24
+  }
+})`
   background-color: ${({ theme }) => theme.colors.background_primary};
 `;
 
@@ -51,5 +56,5 @@ export const RegisterButton = styled(Button).attrs(({ theme }) => ({
   light: true,
   color: theme.colors.shape
 }))`
-  margin-top: 8px;
+  margin: 8px 0;
 `;
