@@ -27,7 +27,10 @@ export function Input({ iconName, style, ...rest }: InputProps) {
         />
       </IconContainer>
 
-      <InputText {...rest} />
+      <InputText
+        placeholderTextColor={theme.colors.text_detail}
+        {...rest} 
+      />
     </Container>
   );
 }

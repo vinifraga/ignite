@@ -1,4 +1,5 @@
 import { TextInput, View } from 'react-native';
+import { RectButton } from 'react-native-gesture-handler';
 import { RFValue } from 'react-native-responsive-fontsize';
 import styled from 'styled-components/native';
 
@@ -22,5 +23,12 @@ export const InputText = styled(TextInput)`
   font-family: ${({ theme }) => theme.fonts.primary_400};
   font-size: ${RFValue(15)}px;
 
-  padding: 0 24px;
+  padding: 0 6px 0 24px;
+`;
+
+export const ToggleSecureTextEntryButton = styled.TouchableOpacity`
+  align-items: center;
+  justify-content: center;
+
+  padding: 0 18px;
 `;

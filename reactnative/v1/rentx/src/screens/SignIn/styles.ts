@@ -1,8 +1,10 @@
 import { getStatusBarHeight } from 'react-native-iphone-x-helper';
 import { RFValue } from 'react-native-responsive-fontsize';
 import styled from 'styled-components/native';
+
 import { Button } from '../../components/Button';
 import { Input } from '../../components/Input';
+import { ProtectedInput } from '../../components/ProtectedInput';
 
 export const Container = styled.View`
   flex: 1;
@@ -28,6 +30,10 @@ export const Form = styled.View`
 `;
 
 export const EmailInput = styled(Input)``;
+
+export const PasswordInput = styled(ProtectedInput)`
+  margin-top: 8px;
+`;
 
 export const SubTitle = styled.Text`
   font-size: ${RFValue(15)}px;

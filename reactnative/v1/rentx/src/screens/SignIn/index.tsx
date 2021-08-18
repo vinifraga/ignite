@@ -1,8 +1,5 @@
 import React from 'react';
 import { StatusBar } from 'react-native';
-import { useTheme } from 'styled-components';
-
-import { Input } from '../../components/Input';
 
 import {
   Container, 
@@ -13,11 +10,11 @@ import {
   RegisterButton, 
   LoginButton, 
   Form,
-  EmailInput
+  EmailInput,
+  PasswordInput
 } from './styles';
 
 export function SignIn() {
-  const theme = useTheme();
 
   return (
     <Container>
@@ -43,8 +40,13 @@ export function SignIn() {
         <EmailInput
           iconName="mail"
           placeholder="E-mail"
-          placeholderTextColor={theme.colors.text_detail}
           keyboardType="email-address"
+          autoCorrect={false}
+          autoCapitalize="none"
+        />
+
+        <PasswordInput 
+          placeholder="Senha"
           autoCorrect={false}
           autoCapitalize="none"
         />
