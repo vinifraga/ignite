@@ -1,10 +1,18 @@
 import React from 'react';
 import { StatusBar } from 'react-native';
 import { useTheme } from 'styled-components';
-import { Button } from '../../components/Button';
+
+import { Input } from '../../components/Input';
 
 import {
-  Container, Header, Title, SubTitle, Footer
+  Container, 
+  Header, 
+  Title, 
+  SubTitle, 
+  Footer, 
+  RegisterButton, 
+  LoginButton, 
+  Form
 } from './styles';
 
 export function SignIn() {
@@ -30,19 +38,24 @@ export function SignIn() {
         </SubTitle>
       </Header>
 
+      <Form>
+        <Input
+          iconName="mail"
+        />
+      </Form>
+
+
       <Footer>
-        <Button 
+        <LoginButton 
           title="Login"
           onPress={() => {}}
           enabled={false}
         />
 
-        <Button 
+        <RegisterButton 
           title="Criar conta gratuita"
           onPress={() => {}}
-          // enabled={false}
-          color={theme.colors.shape}
-          light
+          enabled={false}
         />
       </Footer>
     </Container>
