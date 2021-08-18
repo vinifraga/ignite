@@ -1,4 +1,5 @@
 import React from 'react';
+import { useState } from 'react';
 import { Platform, StatusBar } from 'react-native';
 
 import {
@@ -16,6 +17,9 @@ import {
 } from './styles';
 
 export function SignIn() {
+  const [email, setEmail] = useState('');  
+  const [password, setPassword] = useState('');  
+
   return (
     <KAV 
       behavior={Platform.OS === "ios" ? "padding" : "height"}
@@ -49,12 +53,16 @@ export function SignIn() {
             keyboardType="email-address"
             autoCorrect={false}
             autoCapitalize="none"
+            value={email}
+            onChangeText={setEmail}
           />
 
           <PasswordInput 
             placeholder="Senha"
             autoCorrect={false}
             autoCapitalize="none"
+            value={password}
+            onChangeText={setPassword}
           />
         </Form>
 

@@ -13,29 +13,43 @@ import { useState } from 'react';
 
 interface ProtectedInputProps extends TextInputProps {
   style?: StyleProp<ViewStyle>;
+  value: string;
 }
 
-export function ProtectedInput({ style, ...rest }: ProtectedInputProps) {
+export function ProtectedInput({ style, value, ...rest }: ProtectedInputProps) {
   const theme = useTheme();
   const [isTextEntrySecured, setIsTextEntrySecured] = useState(true);
+  const [isFocused, setIsFocused] = useState(false);
+  const [isFilled, setIsFilled] = useState(false);
+
+  function handleInputFocus() {
+    setIsFocused(true);
+  }
+
+  function handleInputBlur() {
+    setIsFocused(false);
+    setIsFilled(!!value);
+  }
 
   function handleToggleSecureTextEntry() {
     setIsTextEntrySecured(state => !state);
   }
 
   return (
-    <Container style={style}>
+    <Container style={style} isFocused={isFocused}>
       <IconContainer>
         <Feather 
           name="lock"
           size={24}
-          color={theme.colors.text_detail}
+          color={isFocused || isFilled ? theme.colors.main : theme.colors.text_detail}
         />
       </IconContainer>
 
       <InputText
         placeholderTextColor={theme.colors.text_detail}
         secureTextEntry={isTextEntrySecured}
+        onFocus={handleInputFocus}
+        onBlur={handleInputBlur}
         {...rest} 
       />
 
