@@ -1,13 +1,18 @@
 import { useNavigation } from '@react-navigation/native';
 import React from 'react';
+import { Keyboard, KeyboardAvoidingView, Platform } from 'react-native';
 import { BackButton } from '../../../components/BackButton';
 
 import {
   Container,
+  DriversLicenseInput,
+  EmailInput,
   Form,
   FormTitle,
   Header,
+  NameInput,
   NextStepButton,
+  ScrollableContainer,
   SignUpFirstStep,
   SignUpSecondStep,
   SignUpSteps,
@@ -35,24 +40,60 @@ export function FirstStep() {
         </SignUpSteps>
       </Header>
 
-      <Title>
-        Crie sua{'\n'}
-        conta
-      </Title>
-      <SubTitle>
-        Faça seu cadastro de{'\n'}
-        forma rápida e fácil
-      </SubTitle>
+      <KeyboardAvoidingView 
+        behavior={Platform.OS === "ios" ? "padding" : "height"}
+        style={{ flex: 1 }}
+      >
+        <ScrollableContainer
+          keyboardShouldPersistTaps="handled"
+          showsVerticalScrollIndicator={false}
+        >
+          <Title>
+            Crie sua{'\n'}
+            conta
+          </Title>
+          <SubTitle>
+            Faça seu cadastro de{'\n'}
+            forma rápida e fácil
+          </SubTitle>
 
-      <Form>
-        <FormTitle>1. Dados</FormTitle>
+          <Form>
+            <FormTitle>1. Dados</FormTitle>
 
-        <NextStepButton
-          title="Próximo"
-          enabled={false}
-          onPress={() => {}}
-        />
-      </Form>
+            <NameInput
+              iconName="user"
+              placeholder="Nome"
+              autoCorrect={false}
+              // value={name}
+              // onChangeText={setName}
+            />
+
+            <EmailInput
+              iconName="mail"
+              placeholder="E-mail"
+              keyboardType="email-address"
+              autoCorrect={false}
+              autoCapitalize="none"
+              // value={email}
+              // onChangeText={setEmail}
+            />
+
+            <DriversLicenseInput 
+              iconName="credit-card"
+              placeholder="CNH"
+              // keyboardType="numeric"
+              // value={driversLicense}
+              // onChangeText={setDriversLicense}
+            />
+
+            <NextStepButton
+              title="Próximo"
+              enabled={false}
+              onPress={() => {}}
+            />
+          </Form>
+        </ScrollableContainer>
+      </KeyboardAvoidingView>
     </Container>
   );
 }

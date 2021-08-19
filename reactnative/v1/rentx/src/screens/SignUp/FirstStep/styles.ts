@@ -3,13 +3,20 @@ import { RFValue } from 'react-native-responsive-fontsize';
 import styled from 'styled-components/native';
 import { Bullet } from '../../../components/Bullet';
 import { Button } from '../../../components/Button';
+import { Input } from '../../../components/Input';
 
 export const Container = styled.View`
   flex: 1;
-  padding: 0 24px;
+  padding: ${getStatusBarHeight(true) + 31}px 24px 16px;
 
   background-color: ${({ theme }) => theme.colors.background_primary};
 `;
+
+export const ScrollableContainer = styled.ScrollView.attrs({
+  contentContainerStyle: {
+    paddingBottom: 20
+  }
+})``;
 
 export const Header = styled.View`
   width: 100%;
@@ -17,7 +24,7 @@ export const Header = styled.View`
   justify-content: space-between;
   align-items: center;
 
-  margin-top: ${getStatusBarHeight(true) + 31}px;
+  padding-bottom: 6px;
 `;
 
 export const SignUpSteps = styled.View`
@@ -49,13 +56,25 @@ export const SubTitle = styled.Text`
 
 export const Form = styled.View`
   width: 100%;
-  margin: 64px 0;
+  margin-top: 64px;
 `;
 
 export const FormTitle = styled.Text`
   font-size: ${RFValue(20)}px;
   font-family: ${({ theme }) => theme.fonts.secondary_600};
   color: ${({ theme }) => theme.colors.title};
+`;
+
+export const NameInput = styled(Input)`
+  margin-top: 24px;
+`;
+
+export const EmailInput = styled(Input)`
+  margin-top: 8px;
+`;
+
+export const DriversLicenseInput = styled(Input)`
+  margin-top: 8px;
 `;
 
 export const NextStepButton = styled(Button)`
