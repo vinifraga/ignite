@@ -1,16 +1,20 @@
 import { useNavigation } from '@react-navigation/native';
 import React from 'react';
-import { Keyboard, KeyboardAvoidingView, Platform } from 'react-native';
+import { KeyboardAvoidingView, Platform } from 'react-native';
+import { useTheme } from 'styled-components';
 import { BackButton } from '../../../components/BackButton';
 
 import {
+  ConfirmNewPasswordInput,
   Container,
   DriversLicenseInput,
   EmailInput,
+  FinishRegisterButton,
   Form,
   FormTitle,
   Header,
   NameInput,
+  NewPasswordInput,
   NextStepButton,
   ScrollableContainer,
   SignUpFirstStep,
@@ -20,17 +24,14 @@ import {
   Title
 } from './styles';
 
-export function FirstStep() {
+export function SecondStep() {
   const navigation = useNavigation();
+  const theme = useTheme();
 
   function handleGoBack() {
     if (navigation.canGoBack()) {
       navigation.goBack();
     }
-  }
-
-  function handleGoToNextStep() {
-    navigation.navigate('SignUpSecondStep');
   }
 
   return (
@@ -62,37 +63,29 @@ export function FirstStep() {
           </SubTitle>
 
           <Form>
-            <FormTitle>1. Dados</FormTitle>
+            <FormTitle>2. Senha</FormTitle>
 
-            <NameInput
-              iconName="user"
-              placeholder="Nome"
-              autoCorrect={false}
-              // value={name}
-              // onChangeText={setName}
-            />
-
-            <EmailInput
-              iconName="mail"
-              placeholder="E-mail"
-              keyboardType="email-address"
+            <NewPasswordInput
+              placeholder="Senha"
               autoCorrect={false}
               autoCapitalize="none"
-              // value={email}
-              // onChangeText={setEmail}
+              // value={password}
+              // onChangeText={setPassword}
             />
 
-            <DriversLicenseInput 
-              iconName="credit-card"
-              placeholder="CNH"
-              // keyboardType="numeric"
-              // value={driversLicense}
-              // onChangeText={setDriversLicense}
+            <ConfirmNewPasswordInput
+              placeholder="Repetir Senha"
+              autoCorrect={false}
+              autoCapitalize="none"
+              // value={password}
+              // onChangeText={setPassword}
             />
 
-            <NextStepButton
-              title="Próximo"
-              onPress={handleGoToNextStep}
+            <FinishRegisterButton
+              title="Cadastrar"
+              enabled={false}
+              color={theme.colors.success}
+              onPress={() => {}}
             />
           </Form>
         </ScrollableContainer>
