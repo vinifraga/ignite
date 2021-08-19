@@ -1,5 +1,5 @@
-import React from 'react';
-import { useState } from 'react';
+import { useNavigation } from '@react-navigation/native';
+import React, { useState } from 'react';
 import { Alert, Platform, StatusBar } from 'react-native';
 import * as Yup from 'yup';
 
@@ -20,6 +20,7 @@ import {
 export function SignIn() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const navigation = useNavigation();
 
   async function handleSignIn() {
     try {
@@ -47,6 +48,10 @@ export function SignIn() {
         'Ocorreu um erro ao fazer login, verifique as credenciais.'
       );
     }
+  }
+
+  function handleRegister() {
+    navigation.navigate('SignUpFirstStep');
   }
 
   return (
@@ -103,8 +108,7 @@ export function SignIn() {
 
           <RegisterButton 
             title="Criar conta gratuita"
-            onPress={() => {}}
-            enabled={false}
+            onPress={handleRegister}
           />
         </Footer>
       </ScrollableContainer>

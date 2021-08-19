@@ -42,7 +42,7 @@ export const PasswordInput = styled(ProtectedInput)`
 
 export const SubTitle = styled.Text`
   font-size: ${RFValue(15)}px;
-  font-family: ${({ theme }) => theme.fonts.secondary_400};
+  font-family: ${({ theme }) => theme.fonts.primary_400};
   color: ${({ theme }) => theme.colors.text};
   line-height: ${RFValue(25)}px;
   margin-top: 16px;
