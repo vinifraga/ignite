@@ -73,7 +73,7 @@ export const EmailInput = styled(Input)`
   margin-top: 8px;
 `;
 
-export const DriversLicenseInput = styled(Input)`
+export const DriverLicenseInput = styled(Input)`
   margin-top: 8px;
 `;
 

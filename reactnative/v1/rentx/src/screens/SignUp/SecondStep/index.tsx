@@ -1,21 +1,20 @@
-import { useNavigation } from '@react-navigation/native';
+import { useNavigation, useRoute } from '@react-navigation/native';
 import React from 'react';
-import { KeyboardAvoidingView, Platform } from 'react-native';
+import { useState } from 'react';
+import { Alert, KeyboardAvoidingView, Platform } from 'react-native';
 import { useTheme } from 'styled-components';
+import * as Yup from 'yup';
+
 import { BackButton } from '../../../components/BackButton';
 
 import {
   ConfirmNewPasswordInput,
   Container,
-  DriversLicenseInput,
-  EmailInput,
   FinishRegisterButton,
   Form,
   FormTitle,
   Header,
-  NameInput,
   NewPasswordInput,
-  NextStepButton,
   ScrollableContainer,
   SignUpFirstStep,
   SignUpSecondStep,
@@ -24,13 +23,54 @@ import {
   Title
 } from './styles';
 
+interface Params {
+  user: {
+    name: string;
+    email: string;
+    driverLicense: string;
+  }
+}
+
 export function SecondStep() {
   const navigation = useNavigation();
+  const route = useRoute();
   const theme = useTheme();
+  const [newPassword, setNewPassword] = useState('');
+  const [newPasswordConfirmation, setNewPasswordConfirmation] = useState('');
+
+  const { user } = route.params as Params;
 
   function handleGoBack() {
     if (navigation.canGoBack()) {
       navigation.goBack();
+    }
+  }
+
+  async function handleFinishRegister() {
+    try {
+      const schema = Yup.object().shape({
+        newPassword: Yup
+          .string()
+          .required('Senha é obrigatória'),
+        newPasswordConfirmation: Yup
+          .string()
+          .required('Confirmação de senha é obrigatória')
+          .equals([Yup.ref('newPassword')], 'A confirmação de senha precisa ser igual à senha')
+      })
+
+      const data = { newPassword, newPasswordConfirmation };
+      await schema.validate(data, { abortEarly: false });
+
+      // Enviar para API e Cadastrar
+    } catch (error) {
+      if (error instanceof Yup.ValidationError) {
+        return Alert.alert('Opa', error.errors.join('\n'));
+      }
+
+      return Alert.alert(
+        'Erro na autenticação', 
+        'Ocorreu um erro ao fazer login, verifique as credenciais.'
+      );
     }
   }
 
@@ -69,23 +109,22 @@ export function SecondStep() {
               placeholder="Senha"
               autoCorrect={false}
               autoCapitalize="none"
-              // value={password}
-              // onChangeText={setPassword}
+              value={newPassword}
+              onChangeText={setNewPassword}
             />
 
             <ConfirmNewPasswordInput
               placeholder="Repetir Senha"
               autoCorrect={false}
               autoCapitalize="none"
-              // value={password}
-              // onChangeText={setPassword}
+              value={newPasswordConfirmation}
+              onChangeText={setNewPasswordConfirmation}
             />
 
             <FinishRegisterButton
               title="Cadastrar"
-              enabled={false}
               color={theme.colors.success}
-              onPress={() => {}}
+              onPress={handleFinishRegister}
             />
           </Form>
         </ScrollableContainer>
