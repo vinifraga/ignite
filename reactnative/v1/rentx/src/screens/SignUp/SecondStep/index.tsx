@@ -62,6 +62,12 @@ export function SecondStep() {
       await schema.validate(data, { abortEarly: false });
 
       // Enviar para API e Cadastrar
+
+      navigation.navigate('Confirmation', {
+        title: 'Conta criada!',
+        screenToNavigate: 'SignIn',
+        message: `Agora é só fazer login\ne aproveitar.`
+      });
     } catch (error) {
       if (error instanceof Yup.ValidationError) {
         return Alert.alert('Opa', error.errors.join('\n'));
