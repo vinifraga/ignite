@@ -1,6 +1,5 @@
 import React from 'react';
 import { ButtonIcon } from '../ButtonIcon';
-import auth from '@react-native-firebase/auth';
 
 import { Container, Title } from './styles';
 
@@ -11,7 +10,6 @@ type Props = {
 
 export function Header({ title, showLogoutButton = false }: Props) {
   function handleLogout() {
-    auth().signOut();
   }
 
   return (
