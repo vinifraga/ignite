@@ -14,10 +14,12 @@ export function FormBox() {
     try {
       await firestore()
       .collection('products')
-      .doc('my-custom-id')
-      .set(
+      .add(
         { 
-          description, quantity, done: false 
+          description, 
+          quantity, 
+          done: false, 
+          createdAt: firestore.FieldValue.serverTimestamp()
         }
       )
 
