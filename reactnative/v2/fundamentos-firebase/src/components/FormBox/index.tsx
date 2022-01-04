@@ -12,9 +12,10 @@ export function FormBox() {
 
   async function handleProductAdd() {
     try {
-      const response = await firestore()
+      await firestore()
       .collection('products')
-      .add(
+      .doc('my-custom-id')
+      .set(
         { 
           description, quantity, done: false 
         }
