@@ -39,7 +39,6 @@ import {
   RentalPriceQuota,
   RentalPriceTotal
 } from './styles';
-import { getPlatformDate } from '../../utils/getPlatformDate';
 import { api } from '../../services/api';
 import { Alert } from 'react-native';
 
@@ -77,8 +76,8 @@ export function SchedulingDetails() {
       await api.post(`schedules_byuser`, {
         user_id: 1,
         car,
-        startDate: format(getPlatformDate(new Date(dates[0])), 'dd/MM/yyyy'),
-        endDate: format(getPlatformDate(new Date(dates[dates.length - 1])), 'dd/MM/yyyy'),
+        startDate: format(new Date(dates[0]), 'dd/MM/yyyy'),
+        endDate: format(new Date(dates[dates.length - 1]), 'dd/MM/yyyy'),
       })
 
       await api.put(`schedules_bycars/${car.id}`, {
@@ -105,8 +104,8 @@ export function SchedulingDetails() {
 
   useEffect(() => {
     setRentalPeriod({
-      start: format(getPlatformDate(new Date(dates[0])), 'dd/MM/yyyy'),
-      end: format(getPlatformDate(new Date(dates[dates.length - 1])), 'dd/MM/yyyy'),
+      start: format(new Date(dates[0]), 'dd/MM/yyyy'),
+      end: format(new Date(dates[dates.length - 1]), 'dd/MM/yyyy'),
     })
   }, [])
 

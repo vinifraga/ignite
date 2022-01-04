@@ -3,10 +3,9 @@ import { useRoute } from '@react-navigation/native';
 import { useNavigation } from '@react-navigation/core';
 import { useTheme } from 'styled-components';
 import { StatusBar } from 'react-native';
-import { format } from 'date-fns';
+import { format, parseISO } from 'date-fns';
 
 import { CarDTO } from '../../dtos/CarDTO';
-import { getPlatformDate } from '../../utils/getPlatformDate';
 
 import { BackButton } from '../../components/BackButton';
 import { Button } from '../../components/Button';
@@ -77,8 +76,8 @@ export function Scheduling() {
     const endDate = Object.keys(interval)[Object.keys(interval).length - 1];
 
     setRentalPeriod({
-      startFormatted: format(getPlatformDate(new Date(firstDate)), 'dd/MM/yyyy'),
-      endFormatted: format(getPlatformDate(new Date(endDate)), 'dd/MM/yyyy'),
+      startFormatted: format(parseISO(firstDate), 'dd/MM/yyyy'),
+      endFormatted: format(parseISO(endDate), 'dd/MM/yyyy'),
     })
   }
 
