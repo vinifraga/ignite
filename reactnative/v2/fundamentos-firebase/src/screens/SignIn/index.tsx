@@ -41,6 +41,15 @@ export function SignIn() {
     }
   }
 
+  async function handleSignInWithEmailAndPassword() {
+    try {
+      const { user } = await auth().signInWithEmailAndPassword(email, password);
+      console.log(user);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
   return (
     <Container>
       <Title>MyShopping</Title>
@@ -58,7 +67,7 @@ export function SignIn() {
         onChangeText={setPassword}
       />
 
-      <Button title="Entrar" onPress={handleAnonymousSignIn} />
+      <Button title="Entrar" onPress={handleSignInWithEmailAndPassword} />
 
       <Account>
         <ButtonText title="Recuperar senha" onPress={() => { }} />
