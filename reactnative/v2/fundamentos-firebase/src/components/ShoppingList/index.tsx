@@ -8,44 +8,23 @@ import { Product, ProductProps } from '../Product';
 export function ShoppingList() {
   const [products, setProducts] = useState<ProductProps[]>([]);
 
-  // useEffect(() => {
-  //   async function loadDocuments() {
-  //     try {
-  //       const response = await firestore().collection('products').get();
-
-  //       const documentsData = response.docs.map(doc => {
-  //         return {
-  //           id: doc.id,
-  //           ...doc.data(),
-  //         }
-  //       }) as ProductProps[];
-
-  //       setProducts(documentsData)
-  //     } catch (error) {
-  //       console.log(error)
-  //     }
-  //   }
-
-  //   loadDocuments();
-  // }, [])
-
   useEffect(() => {
-    async function loadDocument() {
-      try {
-        const response = await firestore().collection('products').doc('LzwObB2MPZHzQgvLDo0u').get();
+    const subscription = firestore()
+    .collection('products')
+    .onSnapshot(querySnapshot => {
+      const data = querySnapshot.docs.map(doc => {
+        return {
+          id: doc.id,
+          ...doc.data()
+        }
+      }) as ProductProps[];
 
-        const documentData = {
-          id: response.id,
-          ...response.data()
-        } as ProductProps;
+      setProducts(data)
+    })
 
-        setProducts([documentData])
-      } catch (error) {
-        console.log(error)
-      }
+    return () => {
+      subscription()
     }
-
-    loadDocument();
   }, [])
 
   return (
