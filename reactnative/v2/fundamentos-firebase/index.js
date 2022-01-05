@@ -14,9 +14,15 @@ registerRootComponent(App);
 // set the host and the port property to connect to the emulator
 // set these before any read/write operations occur to ensure it doesn't affect your Cloud Firestore data!
 if (__DEV__) {
-  firestore().terminate();
-  firestore().clearPersistence();
-  firestore().useEmulator('localhost', 8080);
+  firestore().terminate().then(() => {
+    firestore().clearPersistence().then(() => {
+      firestore().useEmulator('localhost', 8080);
+    }).catch(() => {
+      console.log('Clear persistence error')
+    });
+  }).catch(() => {
+    console.log('Terminate error')
+  });
 }
 
 firestore();
