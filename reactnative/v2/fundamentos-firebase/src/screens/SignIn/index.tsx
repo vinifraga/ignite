@@ -24,8 +24,20 @@ export function SignIn() {
     try {
       await auth().createUserWithEmailAndPassword(email, password)
       Alert.alert('Usuário criado com sucesso!')
-    } catch (error) {
-      console.log(error);
+    } catch (error: any) {
+      console.log(error.code);
+
+      if (error.code === 'auth/email-already-in-use') {
+        return Alert.alert('E-mail não disponível', 'Escolha outro e-mail para cadastrar.')
+      }
+
+      if (error.code === 'auth/invalid-email') {
+        return Alert.alert('E-mail inválido', 'Escolha uma e-mail válido para cadastro.')
+      }
+
+      if (error.code === 'auth/weak-password') {
+        return Alert.alert('Senha fraca', 'Escolha uma senha com 6 ou mais dígitos.')
+      }
     }
   }
 
