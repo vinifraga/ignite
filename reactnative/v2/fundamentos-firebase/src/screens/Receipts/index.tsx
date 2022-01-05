@@ -10,6 +10,7 @@ import { File, FileProps } from '../../components/File';
 export function Receipts() {
   const [photos, setPhotos] = useState<FileProps[]>([])
   const [photoSelected, setPhotoSelected] = useState('');
+  const [photoInfo, setPhotoInfo] = useState('');
 
   useEffect(() => {
     async function loadPhotos() {
@@ -29,8 +30,11 @@ export function Receipts() {
   }, []);
 
   async function handleShowImage(path: string) {
-    const urlImage = await storage().ref(path).getDownloadURL();
-    setPhotoSelected(urlImage)
+    const imageUrl = await storage().ref(path).getDownloadURL();
+    setPhotoSelected(imageUrl)
+
+    const info = await storage().ref(path).getMetadata();
+    setPhotoInfo(`Upload realizado em ${info.timeCreated}`);
   }
 
   return (
@@ -40,7 +44,7 @@ export function Receipts() {
       <Photo uri={photoSelected} />
 
       <PhotoInfo>
-        Informações da foto
+        {photoInfo}
       </PhotoInfo>
 
       <FlatList
