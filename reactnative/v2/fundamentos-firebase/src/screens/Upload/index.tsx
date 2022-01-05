@@ -60,7 +60,7 @@ export function Upload() {
       <Header title="Upload de Fotos" />
 
       <Content>
-        <Photo uri={image} onPress={handlePickImage} />
+        <Photo title='Clique para adicionar ou para trocar a foto' uri={image} onPress={handlePickImage} />
 
         <Button
           title="Fazer upload"

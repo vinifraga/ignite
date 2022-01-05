@@ -5,9 +5,10 @@ import { Container, EmptyPhotoContainer, Image, EmptyPhotoText } from './styles'
 
 type Props = TouchableOpacityProps & {
   uri?: string;
+  title: string;
 }
 
-export function Photo({ uri, ...rest }: Props) {
+export function Photo({ uri, title, ...rest }: Props) {
   return (
     <TouchableOpacity activeOpacity={0.8} {...rest}>
       <Container>
@@ -15,7 +16,7 @@ export function Photo({ uri, ...rest }: Props) {
           uri ? <Image source={{ uri }} /> : (
             <EmptyPhotoContainer>
               <EmptyPhotoText>
-                Nenhuma foto selecionada
+                {title}
               </EmptyPhotoText>
             </EmptyPhotoContainer >
           )

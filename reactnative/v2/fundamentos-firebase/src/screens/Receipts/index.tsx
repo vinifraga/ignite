@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { Alert, FlatList } from 'react-native';
 import storage from '@react-native-firebase/storage';
 
@@ -6,6 +6,7 @@ import { Container, PhotoInfo } from './styles';
 import { Header } from '../../components/Header';
 import { Photo } from '../../components/Photo';
 import { File, FileProps } from '../../components/File';
+import { useFocusEffect } from '@react-navigation/native';
 
 export function Receipts() {
   const [photos, setPhotos] = useState<FileProps[]>([])
@@ -51,15 +52,15 @@ export function Receipts() {
     }
   }
 
-  useEffect(() => {
+  useFocusEffect(useCallback(() => {
     loadPhotos()
-  }, []);
+  }, []))
 
   return (
     <Container>
       <Header title="Comprovantes" />
 
-      <Photo uri={photoSelected} />
+      <Photo title='Nenhuma foto selecionada' uri={photoSelected} />
 
       <PhotoInfo>
         {photoInfo}
