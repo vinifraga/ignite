@@ -1,14 +1,32 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { FlatList } from 'react-native';
+import storage from '@react-native-firebase/storage';
 
 import { Container, PhotoInfo } from './styles';
 import { Header } from '../../components/Header';
 import { Photo } from '../../components/Photo';
-import { File } from '../../components/File';
-
-import { photosData } from '../../utils/photo.data';
+import { File, FileProps } from '../../components/File';
 
 export function Receipts() {
+  const [photos, setPhotos] = useState<FileProps[]>([])
+
+  useEffect(() => {
+    async function loadPhotos() {
+      const response = await storage().ref('images').list();
+
+      const files = response.items.map(file => (
+        {
+          name: file.name,
+          path: file.fullPath
+        }
+      ))
+
+      setPhotos(files);
+    }
+
+    loadPhotos()
+  }, []);
+
   return (
     <Container>
       <Header title="Comprovantes" />
@@ -20,7 +38,7 @@ export function Receipts() {
       </PhotoInfo>
 
       <FlatList
-        data={photosData}
+        data={photos}
         keyExtractor={item => item.name}
         renderItem={({ item }) => (
           <File
