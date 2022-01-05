@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
 import * as ImagePicker from 'expo-image-picker';
+import storage from '@react-native-firebase/storage';
 
 import { Button } from '../../components/Button';
 import { Header } from '../../components/Header';
 import { Photo } from '../../components/Photo';
 
 import { Container, Content, Progress, Transferred } from './styles';
+import { Alert } from 'react-native';
 
 export function Upload() {
   const [image, setImage] = useState('');
@@ -26,6 +28,19 @@ export function Upload() {
     }
   };
 
+  async function handleUpload() {
+    const fileName = new Date().getTime();
+    const MIME = image.match(/\.(?:.(?!\.))+$/);
+    const reference = storage().ref(`/images/${fileName}${MIME}`);
+
+    try {
+      await reference.putFile(image);
+      Alert.alert('Upload concluído');
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
   return (
     <Container>
       <Header title="Lista de compras" />
@@ -35,7 +50,7 @@ export function Upload() {
 
         <Button
           title="Fazer upload"
-          onPress={() => { }}
+          onPress={handleUpload}
         />
 
         <Progress>
