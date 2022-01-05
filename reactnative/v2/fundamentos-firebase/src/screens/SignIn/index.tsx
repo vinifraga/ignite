@@ -45,8 +45,12 @@ export function SignIn() {
     try {
       const { user } = await auth().signInWithEmailAndPassword(email, password);
       console.log(user);
-    } catch (error) {
-      console.log(error);
+    } catch (error: any) {
+      console.log(error.code);
+
+      if(error.code === 'auth/user-not-found' || 'auth/wrong-password') {
+        Alert.alert('Usuário e/ou senha incorreto', 'Por favor verifique as suas credenciais.')
+      }
     }
   }
 
