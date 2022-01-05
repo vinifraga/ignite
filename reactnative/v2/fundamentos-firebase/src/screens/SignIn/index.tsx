@@ -54,6 +54,15 @@ export function SignIn() {
     }
   }
 
+  async function handleForgotPassword() {
+    try {
+      await auth().sendPasswordResetEmail(email).catch(e => {console.log(e)});
+      Alert.alert('E-mail enviado', 'Enviamos um link no seu e-mail para você redefinir a sua senha.')
+    } catch (error) {
+      console.log(error); 
+    }
+  }
+
   return (
     <Container>
       <Title>MyShopping</Title>
@@ -74,7 +83,7 @@ export function SignIn() {
       <Button title="Entrar" onPress={handleSignInWithEmailAndPassword} />
 
       <Account>
-        <ButtonText title="Recuperar senha" onPress={() => { }} />
+        <ButtonText title="Recuperar senha" onPress={handleForgotPassword} />
         <ButtonText title="Criar minha conta" onPress={handleCreateUserAccount} />
       </Account>
     </Container>
