@@ -11,7 +11,7 @@ export function ShoppingList() {
   useEffect(() => {
     const subscription = firestore()
     .collection('products')
-    .limit(3)
+    .orderBy('description', 'desc')
     .onSnapshot(querySnapshot => {
       const data = querySnapshot.docs.map(doc => {
         return {
