@@ -27,7 +27,7 @@ export default function App() {
         <Text style={{
           fontFamily: 'DMSerifDisplay_400Regular',
           fontSize: 40,
-        }}>Teste</Text>
+        }}>GoPizza</Text>
       </View>
     </ThemeProvider>
   );
