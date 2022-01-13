@@ -1,10 +1,10 @@
-import { Text, View } from 'react-native';
 import { useFonts, DMSans_400Regular } from '@expo-google-fonts/dm-sans';
 import { DMSerifDisplay_400Regular } from '@expo-google-fonts/dm-serif-display';
 import AppLoading from 'expo-app-loading';
 import { ThemeProvider } from 'styled-components/native';
 
 import theme from '@src/theme';
+import { SignIn } from '@src/screens/SignIn';
 
 export default function App() {
   const [fontsLoaded] = useFonts({
@@ -19,16 +19,7 @@ export default function App() {
 
   return (
     <ThemeProvider theme={theme}>
-      <View style={{
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center'
-      }}>
-        <Text style={{
-          fontFamily: 'DMSerifDisplay_400Regular',
-          fontSize: 40,
-        }}>GoPizza</Text>
-      </View>
+      <SignIn />
     </ThemeProvider>
   );
 }
