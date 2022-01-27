@@ -3,6 +3,8 @@ import React, { useState } from 'react';
 import { Alert, Platform, StatusBar } from 'react-native';
 import * as Yup from 'yup';
 
+import { useAuth } from '../../hooks/auth';
+
 import {
   KAV,
   ScrollableContainer, 
@@ -20,7 +22,10 @@ import {
 export function SignIn() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  
   const navigation = useNavigation();
+
+  const { signIn } = useAuth();
 
   async function handleSignIn() {
     try {
@@ -37,7 +42,7 @@ export function SignIn() {
       await schema.validate({ email, password }, { abortEarly: false });
       Alert.alert('tudo certo');
 
-      // Fazer login.
+      await signIn({ email, password });
     } catch (error) {
       if (error instanceof Yup.ValidationError) {
         return Alert.alert('Opa', error.errors.join('\n'));
