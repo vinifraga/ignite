@@ -6,15 +6,16 @@ import { useTheme } from 'styled-components';
 import * as Yup from 'yup';
 
 import { BackButton } from '../../../components/BackButton';
+import { api } from '../../../services/api';
 
 import {
-  ConfirmNewPasswordInput,
+  ConfirmPasswordInput,
   Container,
   FinishRegisterButton,
   Form,
   FormTitle,
   Header,
-  NewPasswordInput,
+  PasswordInput,
   ScrollableContainer,
   SignUpFirstStep,
   SignUpSecondStep,
@@ -35,8 +36,8 @@ export function SecondStep() {
   const navigation = useNavigation();
   const route = useRoute();
   const theme = useTheme();
-  const [newPassword, setNewPassword] = useState('');
-  const [newPasswordConfirmation, setNewPasswordConfirmation] = useState('');
+  const [password, setPassword] = useState('');
+  const [passwordConfirmation, setPasswordConfirmation] = useState('');
 
   const { user } = route.params as Params;
 
@@ -49,19 +50,24 @@ export function SecondStep() {
   async function handleFinishRegister() {
     try {
       const schema = Yup.object().shape({
-        newPassword: Yup
+        password: Yup
           .string()
           .required('Senha é obrigatória'),
-        newPasswordConfirmation: Yup
+        passwordConfirmation: Yup
           .string()
           .required('Confirmação de senha é obrigatória')
-          .equals([Yup.ref('newPassword')], 'A confirmação de senha precisa ser igual à senha')
+          .equals([Yup.ref('password')], 'A confirmação de senha precisa ser igual à senha')
       })
 
-      const data = { newPassword, newPasswordConfirmation };
+      const data = { password, passwordConfirmation };
       await schema.validate(data, { abortEarly: false });
 
-      // Enviar para API e Cadastrar
+      await api.post('/users', {
+        name: user.name,
+        email: user.email,
+        driver_license: user.driverLicense,
+        password,        
+      });
 
       navigation.navigate('Confirmation', {
         title: 'Conta criada!',
@@ -74,8 +80,8 @@ export function SecondStep() {
       }
 
       return Alert.alert(
-        'Erro na autenticação', 
-        'Ocorreu um erro ao fazer login, verifique as credenciais.'
+        'Erro no cadastro', 
+        'Ocorreu um erro ao fazer o cadastro, verifique as credenciais.'
       );
     }
   }
@@ -111,20 +117,20 @@ export function SecondStep() {
           <Form>
             <FormTitle>2. Senha</FormTitle>
 
-            <NewPasswordInput
+            <PasswordInput
               placeholder="Senha"
               autoCorrect={false}
               autoCapitalize="none"
-              value={newPassword}
-              onChangeText={setNewPassword}
+              value={password}
+              onChangeText={setPassword}
             />
 
-            <ConfirmNewPasswordInput
+            <ConfirmPasswordInput
               placeholder="Repetir Senha"
               autoCorrect={false}
               autoCapitalize="none"
-              value={newPasswordConfirmation}
-              onChangeText={setNewPasswordConfirmation}
+              value={passwordConfirmation}
+              onChangeText={setPasswordConfirmation}
             />
 
             <FinishRegisterButton

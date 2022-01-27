@@ -65,11 +65,11 @@ export const FormTitle = styled.Text`
   color: ${({ theme }) => theme.colors.title};
 `;
 
-export const NewPasswordInput  = styled(ProtectedInput)`
+export const PasswordInput  = styled(ProtectedInput)`
   margin-top: 24px;
 `;
 
-export const ConfirmNewPasswordInput  = styled(ProtectedInput)`
+export const ConfirmPasswordInput  = styled(ProtectedInput)`
   margin-top: 8px;
 `;
 
