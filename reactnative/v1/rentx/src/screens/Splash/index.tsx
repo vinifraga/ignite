@@ -4,6 +4,7 @@ import Animated, { useSharedValue, useAnimatedStyle, withTiming, interpolate, Ex
 
 import BrandSvg from '../../assets/brand.svg';
 import LogoSvg from '../../assets/logo.svg';
+import { useAuth } from '../../hooks/auth';
 
 import {
   Container
@@ -12,6 +13,8 @@ import {
 export function Splash() {
   const splashAnimation = useSharedValue(0);
   const navigation = useNavigation();
+
+  const { user } = useAuth();
 
   const brandStyle = useAnimatedStyle(() => {
     return {
@@ -46,10 +49,20 @@ export function Splash() {
   });
 
   function startApp() {
+    // let screenToGo;
+
+    // if (user.id) {
+    //   screenToGo = 'Home'
+    // } else {
+    //   screenToGo = 'SignIn'
+    // }
+
+    // console.log(screenToGo);
+
     navigation.reset({
       index: 0,
       routes: [
-        { name: 'Home' }
+        { name: 'SignIn' }
       ]
     });
   }
