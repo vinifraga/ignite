@@ -17,7 +17,7 @@ export function Groups() {
       <Header />
       <Highlight 
         title="Turmas"
-        subtitle="jogue com sua turma"
+        subtitle="jogue com a sua turma"
       />
 
       <FlatList 
