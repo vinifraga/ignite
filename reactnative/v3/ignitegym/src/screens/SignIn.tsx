@@ -5,7 +5,7 @@ import backgroundImg from '@assets/background.png';
 import { Input } from "@components/Input";
 export function SignIn() {
   return (
-    <VStack flex={1} bgColor="gray.700">
+    <VStack flex={1} bgColor="gray.700" px={10}>
       <Image 
         source={backgroundImg}
         alt="Pessoas treinando"
@@ -26,8 +26,15 @@ export function SignIn() {
           Acesse sua conta
         </Heading>
 
-        <Input placeholder="E-mail" />
-        <Input placeholder="Senha" />
+        <Input 
+          placeholder="E-mail"
+          keyboardType="email-address"
+          autoCapitalize="none"
+        />
+        <Input 
+          placeholder="Senha"
+          secureTextEntry  
+        />
       </Center>
     </VStack>
   );
