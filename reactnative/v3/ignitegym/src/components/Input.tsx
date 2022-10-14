@@ -23,6 +23,11 @@ export function Input({ errorMessage = null, isInvalid, ...rest }: Props) {
           borderWidth: 1,
           borderColor: "green.500"
         }}
+        isInvalid={invalid}
+        _invalid={{
+          borderWidth: 1,
+          borderColor: 'red.500'
+        }}
         {...rest}
       />
 
