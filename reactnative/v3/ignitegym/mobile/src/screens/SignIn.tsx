@@ -9,6 +9,7 @@ import { Button } from "@components/Button";
 
 import LogoSvg from '@assets/logo.svg';
 import backgroundImg from '@assets/background.png';
+import { useAuth } from "@hooks/useAuth";
 
 type FormData = {
   email: string;
@@ -20,12 +21,14 @@ export function SignIn() {
 
   const { control, handleSubmit, formState: { errors } } = useForm<FormData>();
 
+  const { signIn } = useAuth();
+
   function handleNewAccount() {
     navigation.navigate("signUp");
   }
 
   function handleSignIn({ email, password }: FormData) {
-    console.log(email, password);
+    signIn(email, password);
   }
 
   return (
