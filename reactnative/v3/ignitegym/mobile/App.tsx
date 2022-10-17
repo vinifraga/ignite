@@ -17,18 +17,9 @@ export default function App() {
         backgroundColor="transparent"
         translucent
       />
-      <AuthContext.Provider value={{
-        user: {
-          id: '1',
-          name: 'Rodrigo',
-          email: 'rodrigo@email.com',
-          avatar: 'rodrigo.png'
-        }
-      }}>
         <AuthContextProvider>
           {fontsLoaded ? <Routes /> : <Loading />}
         </AuthContextProvider>
-      </AuthContext.Provider>
     </NativeBaseProvider>
   );
 }
