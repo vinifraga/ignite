@@ -4,7 +4,7 @@ import { UserDTO } from "@dtos/UserDTO";
 
 import { api } from "@services/api";
 import { storageUserGet, storageUserRemove, storageUserSave } from "@storage/storageUser";
-import { storageAuthTokenGet, storageAuthTokenSave } from "@storage/storageAuthToken";
+import { storageAuthTokenGet, storageAuthTokenRemove, storageAuthTokenSave } from "@storage/storageAuthToken";
 
 export type AuthContextDataProps = {
   user: UserDTO;
@@ -62,6 +62,8 @@ export function AuthContextProvider({ children }: AuthContextProviderProps) {
       setIsLoadingUserStoragedData(true);
       setUser({} as UserDTO);
       await storageUserRemove();
+      await storageAuthTokenRemove();
+      delete api.defaults.headers.common['Authorization'];
     } catch (error) {
       throw error;
     } finally {
