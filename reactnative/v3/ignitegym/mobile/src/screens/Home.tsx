@@ -102,7 +102,7 @@ export function Home() {
           data={exercises}
           keyExtractor={item => String(item.id)}
           renderItem={({ item }) => {
-            return <ExerciseCard onPress={handleOpenExerciseDetails} />
+            return <ExerciseCard onPress={handleOpenExerciseDetails} data={item} />
           }}
           showsVerticalScrollIndicator={false}
           _contentContainerStyle={{ pb: 20 }}
