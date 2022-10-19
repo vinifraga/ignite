@@ -1,12 +1,20 @@
 import { storageAuthTokenGet } from '@storage/storageAuthToken';
 import { AppError } from '@utils/AppError';
-import axios, { AxiosInstance } from 'axios';
+import axios, { AxiosError, AxiosInstance } from 'axios';
 
 type SignOut = () => void;
+
+type FailedRequestQueueProps = {
+  onSuccess: (token: string) => void;
+  onFailure: (error: AxiosError) => void;
+}
 
 type APIInstanceProps = AxiosInstance & {
   registerInterceptTokenManager: (signOut: SignOut) => () => void;
 }
+
+let failedRequestQueue: FailedRequestQueueProps[] = [];
+let isRefreshingToken = false;
 
 const api = axios.create({
   baseURL: 'http://192.168.15.6:3333'
@@ -22,6 +30,25 @@ api.registerInterceptTokenManager = signOut => {
           signOut();
           return Promise.reject(error);
         }
+
+        const originalRequestConfig = error.config;
+
+        if (isRefreshingToken) {
+          return new Promise((resolve, reject) => {
+            failedRequestQueue.push({
+              onSuccess: (token) => {
+                originalRequestConfig.headers['Authorization'] = `Bearer ${token}`;
+
+                resolve(api(originalRequestConfig));
+              },
+              onFailure: (error: AxiosError) => {
+                reject(error);
+              }
+            })
+          })
+        }
+
+        isRefreshingToken = true;
       } else {
         signOut();
       }
