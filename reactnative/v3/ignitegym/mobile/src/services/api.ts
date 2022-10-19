@@ -1,4 +1,4 @@
-import { storageAuthTokenGet } from '@storage/storageAuthToken';
+import { storageAuthTokenGet, storageAuthTokenSave } from '@storage/storageAuthToken';
 import { AppError } from '@utils/AppError';
 import axios, { AxiosError, AxiosInstance } from 'axios';
 
@@ -49,6 +49,20 @@ api.registerInterceptTokenManager = signOut => {
         }
 
         isRefreshingToken = true;
+
+        return new Promise(async (resolve, reject) => {
+          try {
+            const { data } = await api.post('/sessions/refresh-token', { token: expiredToken });
+            
+            await storageAuthTokenSave(data.token);
+
+            api.defaults.headers.common['Authorization'] = `Bearer ${data.token}`;
+          } catch (error) {
+            
+          } finally {
+            isRefreshingToken = false;
+          }
+        })
       } else {
         signOut();
       }
