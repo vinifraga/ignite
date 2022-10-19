@@ -57,8 +57,14 @@ api.registerInterceptTokenManager = signOut => {
             await storageAuthTokenSave(data.token);
 
             api.defaults.headers.common['Authorization'] = `Bearer ${data.token}`;
-          } catch (error) {
-            
+          
+            failedRequestQueue.forEach(request => request.onSuccess(data.token));
+            failedRequestQueue = [];
+          } catch (error: any) {
+            failedRequestQueue.forEach(request => request.onFailure(error));
+            failedRequestQueue = [];
+
+            signOut();
           } finally {
             isRefreshingToken = false;
           }
