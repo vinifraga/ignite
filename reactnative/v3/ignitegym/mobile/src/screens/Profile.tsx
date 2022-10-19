@@ -133,7 +133,7 @@ export function Profile() {
     try {
       setIsUpdating(true);
 
-      const userUpdated = user;
+      const userUpdated = { ...user };
       userUpdated.name = data.name;
 
       await api.put('/users', data);
