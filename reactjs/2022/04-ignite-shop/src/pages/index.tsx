@@ -3,6 +3,7 @@ import 'keen-slider/keen-slider.min.css'
 import Image from 'next/image'
 import { useKeenSlider } from 'keen-slider/react'
 import { GetStaticProps } from 'next'
+import invariant from 'tiny-invariant'
 
 import { stripe } from '../lib/stripe'
 
@@ -50,11 +51,16 @@ export const getStaticProps: GetStaticProps = async () => {
     if (typeof product.default_price === 'string')
       throw new Error('Product price was not expanded.')
 
+    invariant(product.default_price?.unit_amount, 'Invalid price unit amount.')
+
     return {
       id: product.id,
       name: product.name,
       imageUrl: product.images[0],
-      price: product.default_price?.unit_amount,
+      price: new Intl.NumberFormat('pt-BR', {
+        style: 'currency',
+        currency: 'BRL',
+      }).format(product.default_price?.unit_amount / 100),
     }
   })
 
