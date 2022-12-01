@@ -1,24 +1,19 @@
 import 'keen-slider/keen-slider.min.css'
 
-import Image from "next/image"
+import Image from 'next/image'
 import { useKeenSlider } from 'keen-slider/react'
 import { GetServerSideProps } from 'next'
 
 import { stripe } from '../lib/stripe'
 
-import { styled } from "../styles"
-import { HomeContainer, Product } from "../styles/pages/home"
-
-import camiseta1 from '../assets/camisetas/1.png'
-import camiseta2 from '../assets/camisetas/2.png'
-import camiseta3 from '../assets/camisetas/3.png'
+import { HomeContainer, Product } from '../styles/pages/home'
 
 interface HomeProps {
   products: {
-    id: string;
-    name: string;
-    imageUrl: string;
-    price: number | null | undefined;
+    id: string
+    name: string
+    imageUrl: string
+    price: number | null | undefined
   }[]
 }
 
@@ -26,14 +21,14 @@ export default function Home({ products }: HomeProps) {
   const [sliderRef] = useKeenSlider({
     slides: {
       perView: 3,
-      spacing: 48
-    }
+      spacing: 48,
+    },
   })
 
   return (
     <HomeContainer ref={sliderRef} className="keen-slider">
-      {products.map(product => (
-        <Product key={product.id} className='keen-slider__slide'>
+      {products.map((product) => (
+        <Product key={product.id} className="keen-slider__slide">
           <Image src={product.imageUrl} width={520} height={480} alt="" />
 
           <footer>
@@ -48,23 +43,24 @@ export default function Home({ products }: HomeProps) {
 
 export const getServerSideProps: GetServerSideProps = async () => {
   const response = await stripe.products.list({
-    expand: ['data.default_price']
+    expand: ['data.default_price'],
   })
 
-  const products = response.data.map(product => {
-    if (typeof product.default_price === 'string') throw new Error('Product price was not expanded.')
-    
+  const products = response.data.map((product) => {
+    if (typeof product.default_price === 'string')
+      throw new Error('Product price was not expanded.')
+
     return {
       id: product.id,
       name: product.name,
       imageUrl: product.images[0],
-      price: product.default_price?.unit_amount
+      price: product.default_price?.unit_amount,
     }
   })
 
   return {
     props: {
-      products
-    }
+      products,
+    },
   }
 }
