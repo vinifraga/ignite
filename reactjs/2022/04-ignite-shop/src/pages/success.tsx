@@ -36,8 +36,8 @@ export default function Success({ customerName, product }: SuccessProps) {
 export const getServerSideProps: GetServerSideProps = async ({ query }) => {
   const { session_id: sessionId } = query
 
-  if (typeof sessionId !== 'string')
-    throw new Error('Invalid session_id value.')
+  if (typeof sessionId !== 'string' || !sessionId)
+    return { redirect: { destination: '/', permanent: false } }
 
   const session = await stripe.checkout.sessions.retrieve(sessionId, {
     expand: ['line_items', 'line_items.data.price.product'],
