@@ -11,6 +11,7 @@ import { Loading } from './src/components/Loading';
 import { CartContextProvider } from './src/contexts/CartContext';
 
 OneSignal.setAppId('c5249431-8cc4-4795-a3ee-ec8c5578aa36')
+OneSignal.setEmail('vinifragam@gmail.com')
 
 export default function App() {
   const [fontsLoaded] = useFonts({ Roboto_400Regular, Roboto_700Bold });
