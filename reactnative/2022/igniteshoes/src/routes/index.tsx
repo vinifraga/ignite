@@ -22,7 +22,7 @@ export function Routes() {
     })
 
     return () => unsubscribe
-  })
+  }, [])
 
   return (
     <NavigationContainer theme={theme}>
