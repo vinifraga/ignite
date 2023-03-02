@@ -15,9 +15,12 @@ export const THEME = {
     DANGER_LIGHT: "#F75A68",
 
     LABEL: "#A6A1B2",
+
+    STAR_BLUE: "#57B6E5",
+    STAR_GRAY: "#6F6F6F",
   },
   FONTS: {
     REGULAR: "Roboto_400Regular",
-    BOLD: "Roboto_700Bold"
-  }
+    BOLD: "Roboto_700Bold",
+  },
 };
