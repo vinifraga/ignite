@@ -1,17 +1,16 @@
-import { StyleSheet } from 'react-native';
+import { StyleSheet } from "react-native";
 
-import { THEME } from '../../styles/theme';
+import { THEME } from "../../styles/theme";
 
 export const styles = StyleSheet.create({
   container: {
-    width: '100%',
-    marginBottom: 21,
+    width: "100%",
   },
   header: {
-    width: '100%',
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
+    width: "100%",
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
     marginBottom: 8,
     marginTop: 40,
   },
@@ -21,9 +20,9 @@ export const styles = StyleSheet.create({
     fontSize: 16,
   },
   question: {
-    color: '#C4C4CC'
+    color: "#C4C4CC",
   },
   length: {
-    color: '#C4C4CC'
+    color: "#C4C4CC",
   },
 });
