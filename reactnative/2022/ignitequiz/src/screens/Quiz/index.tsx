@@ -1,18 +1,26 @@
-import { useEffect, useState } from 'react';
-import { Alert, ScrollView, View } from 'react-native';
+import { useEffect, useState } from "react";
+import { Alert, ScrollView, View } from "react-native";
+import Animated, {
+  Easing,
+  interpolate,
+  useAnimatedStyle,
+  useSharedValue,
+  withSequence,
+  withTiming,
+} from "react-native-reanimated";
 
-import { useNavigation, useRoute } from '@react-navigation/native';
+import { useNavigation, useRoute } from "@react-navigation/native";
 
-import { styles } from './styles';
+import { styles } from "./styles";
 
-import { QUIZ } from '../../data/quiz';
-import { historyAdd } from '../../storage/quizHistoryStorage';
+import { QUIZ } from "../../data/quiz";
+import { historyAdd } from "../../storage/quizHistoryStorage";
 
-import { Loading } from '../../components/Loading';
-import { Question } from '../../components/Question';
-import { QuizHeader } from '../../components/QuizHeader';
-import { ConfirmButton } from '../../components/ConfirmButton';
-import { OutlineButton } from '../../components/OutlineButton';
+import { Loading } from "../../components/Loading";
+import { Question } from "../../components/Question";
+import { QuizHeader } from "../../components/QuizHeader";
+import { ConfirmButton } from "../../components/ConfirmButton";
+import { OutlineButton } from "../../components/OutlineButton";
 
 interface Params {
   id: string;
@@ -25,7 +33,11 @@ export function Quiz() {
   const [isLoading, setIsLoading] = useState(true);
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [quiz, setQuiz] = useState<QuizProps>({} as QuizProps);
-  const [alternativeSelected, setAlternativeSelected] = useState<null | number>(null);
+  const [alternativeSelected, setAlternativeSelected] = useState<null | number>(
+    null
+  );
+
+  const shake = useSharedValue(0);
 
   const { navigate } = useNavigation();
 
@@ -33,9 +45,9 @@ export function Quiz() {
   const { id } = route.params as Params;
 
   function handleSkipConfirm() {
-    Alert.alert('Pular', 'Deseja realmente pular a questão?', [
-      { text: 'Sim', onPress: () => handleNextQuestion() },
-      { text: 'Não', onPress: () => { } }
+    Alert.alert("Pular", "Deseja realmente pular a questão?", [
+      { text: "Sim", onPress: () => handleNextQuestion() },
+      { text: "Não", onPress: () => {} },
     ]);
   }
 
@@ -45,10 +57,10 @@ export function Quiz() {
       title: quiz.title,
       level: quiz.level,
       points,
-      questions: quiz.questions.length
+      questions: quiz.questions.length,
     });
 
-    navigate('finish', {
+    navigate("finish", {
       points: String(points),
       total: String(quiz.questions.length),
     });
@@ -56,7 +68,7 @@ export function Quiz() {
 
   function handleNextQuestion() {
     if (currentQuestion < quiz.questions.length - 1) {
-      setCurrentQuestion(prevState => prevState + 1)
+      setCurrentQuestion((prevState) => prevState + 1);
     } else {
       handleFinished();
     }
@@ -68,7 +80,9 @@ export function Quiz() {
     }
 
     if (quiz.questions[currentQuestion].correct === alternativeSelected) {
-      setPoints(prevState => prevState + 1);
+      setPoints((prevState) => prevState + 1);
+    } else {
+      shakeAnimation();
     }
 
     setAlternativeSelected(null);
@@ -77,29 +91,50 @@ export function Quiz() {
   }
 
   function handleStop() {
-    Alert.alert('Parar', 'Deseja parar agora?', [
+    Alert.alert("Parar", "Deseja parar agora?", [
       {
-        text: 'Não',
-        style: 'cancel',
+        text: "Não",
+        style: "cancel",
       },
       {
-        text: 'Sim',
-        style: 'destructive',
-        onPress: () => navigate('home')
+        text: "Sim",
+        style: "destructive",
+        onPress: () => navigate("home"),
       },
     ]);
 
     return true;
   }
 
+  function shakeAnimation() {
+    shake.value = withSequence(
+      withTiming(3, { duration: 400, easing: Easing.bounce }),
+      withTiming(0)
+    );
+  }
+
+  const shakeStyleAnimated = useAnimatedStyle(() => {
+    return {
+      transform: [
+        {
+          translateX: interpolate(
+            shake.value,
+            [0, 0.5, 1, 1.5, 2, 2.5, 3],
+            [0, -15, 0, 15, 0, -15, 0]
+          ),
+        },
+      ],
+    };
+  });
+
   useEffect(() => {
-    const quizSelected = QUIZ.filter(item => item.id === id)[0];
+    const quizSelected = QUIZ.filter((item) => item.id === id)[0];
     setQuiz(quizSelected);
     setIsLoading(false);
   }, []);
 
   if (isLoading) {
-    return <Loading />
+    return <Loading />;
   }
 
   return (
@@ -114,18 +149,20 @@ export function Quiz() {
           totalOfQuestions={quiz.questions.length}
         />
 
-        <Question
-          key={quiz.questions[currentQuestion].title}
-          question={quiz.questions[currentQuestion]}
-          alternativeSelected={alternativeSelected}
-          setAlternativeSelected={setAlternativeSelected}
-        />
+        <Animated.View style={shakeStyleAnimated}>
+          <Question
+            key={quiz.questions[currentQuestion].title}
+            question={quiz.questions[currentQuestion]}
+            alternativeSelected={alternativeSelected}
+            setAlternativeSelected={setAlternativeSelected}
+          />
+        </Animated.View>
 
         <View style={styles.footer}>
           <OutlineButton title="Parar" onPress={handleStop} />
           <ConfirmButton onPress={handleConfirm} />
         </View>
       </ScrollView>
-    </View >
+    </View>
   );
 }
