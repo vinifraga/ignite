@@ -10,10 +10,10 @@ const STATUS = [
 ];
 
 type Props = {
-  status: number;
+  status?: number;
 };
 
-export function OverlayFeedback({ status }: Props) {
+export function OverlayFeedback({ status = 0 }: Props) {
   const color = STATUS[status];
 
   const { height, width } = useWindowDimensions();
