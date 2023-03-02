@@ -10,6 +10,7 @@ import {
   useLoop,
 } from "@shopify/react-native-skia";
 import { THEME } from "../../styles/theme";
+import Animated, { BounceIn } from "react-native-reanimated";
 
 export function Stars() {
   const backStarsOpacity = useLoop({
@@ -131,7 +132,9 @@ export function Stars() {
           path="M103.616 80.25C103.239 80.25 102.904 80.0094 102.783 79.6523C101.097 74.6563 99.835 73.3941 94.8389 71.7078C94.4818 71.5871 94.2412 71.252 94.2412 70.875C94.2412 70.498 94.4818 70.1629 94.8389 70.0422C99.835 68.3563 101.097 67.0937 102.783 62.0977C102.904 61.7406 103.239 61.5 103.616 61.5C103.993 61.5 104.328 61.7406 104.449 62.0977C106.135 67.0937 107.397 68.3559 112.394 70.0422C112.751 70.1629 112.991 70.498 112.991 70.875C112.991 71.252 112.751 71.5871 112.394 71.7078C107.397 73.3941 106.135 74.6563 104.449 79.6523C104.328 80.0094 103.993 80.25 103.616 80.25Z"
         />
       </Canvas>
-      <TrophySvg />
+      <Animated.View entering={BounceIn}>
+        <TrophySvg />
+      </Animated.View>
     </View>
   );
 }
