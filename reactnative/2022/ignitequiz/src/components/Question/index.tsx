@@ -46,10 +46,11 @@ export function Question({
       transform: [{ translateX: SCREEN_WIDTH * -1 }, { rotate: "-90deg" }],
     },
   });
+
   return (
     <Animated.View
-      exiting={exitingKeyframe}
-      entering={enteringKeyframe}
+      exiting={exitingKeyframe.duration(400)}
+      entering={enteringKeyframe.duration(400)}
       style={styles.container}
     >
       <Text style={styles.title}>{question.title}</Text>
