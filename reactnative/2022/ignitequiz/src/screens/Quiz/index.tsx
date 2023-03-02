@@ -49,6 +49,7 @@ export function Quiz() {
   const shake = useSharedValue(0);
   const scrollY = useSharedValue(0);
   const cardPosition = useSharedValue(0);
+  const cardIsDragging = useSharedValue(false);
 
   const { navigate } = useNavigation();
 
@@ -172,7 +173,21 @@ export function Quiz() {
     };
   });
 
+  const onLongPress = Gesture.LongPress()
+    .onStart(() => {
+      cardIsDragging.value = true;
+    })
+    .minDuration(200);
+
   const onPan = Gesture.Pan()
+    .manualActivation(true)
+    .onTouchesMove((_, state) => {
+      if (cardIsDragging.value) {
+        state.activate();
+      } else {
+        state.fail();
+      }
+    })
     .onUpdate((event) => {
       const moveToLeft = event.translationX < 0;
 
@@ -184,7 +199,11 @@ export function Quiz() {
       }
 
       cardPosition.value = withTiming(0);
-    });
+    })
+    .onFinalize(() => {
+      cardIsDragging.value = false;
+    })
+    .simultaneousWithExternalGesture(onLongPress);
 
   const dragStyles = useAnimatedStyle(() => {
     const rotateZ = cardPosition.value / CARD_INCLINATION;
@@ -230,7 +249,7 @@ export function Quiz() {
           />
         </Animated.View>
 
-        <GestureDetector gesture={onPan}>
+        <GestureDetector gesture={Gesture.Race(onPan, onLongPress)}>
           <Animated.View style={[shakeStyleAnimated, dragStyles]}>
             <Question
               key={quiz.questions[currentQuestion].title}
