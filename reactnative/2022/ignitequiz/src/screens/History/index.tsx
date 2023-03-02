@@ -23,7 +23,7 @@ export function History() {
 
   const { goBack } = useNavigation();
 
-  const swipeableRefs = useRef<Swipeable[]>([]);
+  const swipeableRefs = useRef<Map<string, Swipeable>>(new Map());
 
   async function fetchHistory() {
     const response = await historyGetAll();
@@ -37,8 +37,8 @@ export function History() {
     fetchHistory();
   }
 
-  function handleRemove(id: string, index: number) {
-    swipeableRefs.current?.[index].close();
+  function handleRemove(id: string) {
+    swipeableRefs.current.get(id)?.close();
     Alert.alert("Remover", "Deseja remover esse registro?", [
       {
         text: "Sim",
@@ -69,7 +69,7 @@ export function History() {
         contentContainerStyle={styles.history}
         showsVerticalScrollIndicator={false}
       >
-        {history.map((item, index) => (
+        {history.map((item) => (
           <Animated.View
             layout={Layout.springify()}
             entering={SlideInRight}
@@ -79,7 +79,9 @@ export function History() {
             <Swipeable
               ref={(ref) => {
                 if (ref) {
-                  swipeableRefs.current.push(ref);
+                  swipeableRefs.current.set(item.id, ref);
+                } else {
+                  swipeableRefs.current.delete(item.id);
                 }
               }}
               overshootLeft={false}
@@ -87,7 +89,7 @@ export function History() {
               renderLeftActions={() => (
                 <Pressable
                   style={styles.swipeableRemove}
-                  onPress={() => handleRemove(item.id, index)}
+                  onPress={() => handleRemove(item.id)}
                 >
                   <Trash size={32} color={THEME.COLORS.GREY_100} />
                 </Pressable>
