@@ -1,3 +1,5 @@
+"use strict";
+
 // ../tokens/dist/index.mjs
 var colors = {
   white: "#FFF",
