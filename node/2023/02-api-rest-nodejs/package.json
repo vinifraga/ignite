@@ -4,12 +4,17 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "tsx watch src/server.ts"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@types/node": "^20.10.4",
+    "tsx": "^4.6.2",
     "typescript": "^5.3.3"
+  },
+  "dependencies": {
+    "fastify": "^4.25.0"
   }
 }
